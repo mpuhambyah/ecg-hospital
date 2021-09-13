@@ -42,11 +42,11 @@
 </html>
 
 <script>
-    const list = $(".nav-link");
+    const list = $("li>.nav-link.textnya");
     const title = $("title").html();
     for (let i = 0; i < list.length; i++) {
-        if (list[i].innerHTML == title) {
-            list[i].classList.add("active");
+        if (list[i].querySelector('span').innerHTML == title) {
+            list[i].parentElement.classList.add("active");
         }
     }
 </script>

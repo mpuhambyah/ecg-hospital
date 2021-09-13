@@ -46,7 +46,8 @@ class Auth extends CI_Controller
                     $data = [
                         'name' => $user['name'],
                         'email' => $user['email'],
-                        'id' => $user['id']
+                        'id' => $user['id'],
+                        'role_id' => $user['role_id']
                     ];
 
                     #memasukkan data di atas ke session
