@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>node_modules/bootstrap-social/bootstrap-social.css">
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="<?= base_url() ?>assets/css/admin/style.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/css/admin/components.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/dokter/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/dokter/components.css">
     <link href="<?= base_url() ?>assets/img/<?= $profile['logo'] ?>" rel="icon">
 </head>
 
@@ -30,7 +30,7 @@
                         <?= $this->session->flashdata('message'); ?>
                         <form class="user" method="POST" action="<?= base_url('auth'); ?>">
                             <div class="form-group">
-                                <label for="email">Email</label>
+                                <label for="email">Username</label>
                                 <input id="email" type="text" class="form-control" name="email" tabindex="1" required autofocus>
                                 <div class="invalid-feedback">
                                     Please fill in your username
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="<?= base_url() ?>assets/img/admin/bg.jpg">
+                <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="<?= base_url() ?>assets/img/dokter/bg.jpg">
                     <div class="absolute-bottom-left index-2">
                         <div class="text-light p-5 pb-2">
                             <div class="mb-5 pb-3">
@@ -87,13 +87,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="<?= base_url() ?>assets/js/admin/stisla.js"></script>
+    <script src="<?= base_url() ?>assets/js/dokter/stisla.js"></script>
 
     <!-- JS Libraies -->
 
     <!-- Template JS File -->
-    <script src="<?= base_url() ?>assets/js/admin/scripts.js"></script>
-    <script src="<?= base_url() ?>assets/js/admin/custom.js"></script>
+    <script src="<?= base_url() ?>assets/js/dokter/scripts.js"></script>
+    <script src="<?= base_url() ?>assets/js/dokter/custom.js"></script>
 
     <!-- Page Specific JS File -->
 </body>

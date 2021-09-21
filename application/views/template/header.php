@@ -13,8 +13,8 @@
     <!-- CSS Libraries -->
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="<?= base_url() ?>assets/css/admin/style.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/css/admin/components.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/dokter/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/dokter/components.css">
     <link href="<?= base_url() ?>assets/img/<?= $profile['logo'] ?>" rel="icon">
 </head>
 

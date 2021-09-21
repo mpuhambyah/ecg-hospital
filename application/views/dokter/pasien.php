@@ -21,7 +21,7 @@
                                 </tr>
                                 <tr>
                                     <td><a href="#">A-123</a></td>
-                                    <td class="font-weight-600">Kusnadi</td>
+                                    <td class="font-weight-600">Kusnandi</td>
                                     <td>
                                         <div class="badge badge-warning">Uncheked</div>
                                     </td>

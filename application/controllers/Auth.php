@@ -14,7 +14,7 @@ class Auth extends CI_Controller
     {
         $data['profile'] = $this->db->get('profile')->row_array();
         if ($this->session->userdata('id')) {
-            redirect(base_url('admin'));
+            redirect(base_url('dokter'));
         } else {
             $this->form_validation->set_rules('email', 'email', 'required|trim');
             $this->form_validation->set_rules('password', 'Password', 'required|trim');
@@ -52,7 +52,7 @@ class Auth extends CI_Controller
 
                     #memasukkan data di atas ke session
                     $this->session->set_userdata($data);
-                    redirect(base_url('admin'));
+                    redirect(base_url('dokter'));
 
                     #jika password salah
                 } else {

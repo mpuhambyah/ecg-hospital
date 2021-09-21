@@ -21,13 +21,13 @@
                                 </tr>
                                 <tr>
                                     <td><a href="#">A-123</a></td>
-                                    <td class="font-weight-600">Kusnadi</td>
+                                    <td class="font-weight-600">Kusnandi</td>
                                     <td>
                                         <div class="badge badge-warning">Uncheked</div>
                                     </td>
                                     <td>September 19, 2021</td>
                                     <td>
-                                        <a href="<?= base_url() ?>admin/record/1/1" class="btn btn-primary">Detail</a>
+                                        <a href="<?= base_url() ?>dokter/listRecord/1/1" class="btn btn-primary">Detail</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -95,7 +95,7 @@
                                     <h4>Rekaman 1</h4>
                                 </div>
                                 <div class="ticket-info">
-                                    <div>Mpu Hambyah</div>
+                                    <div>Kusnandi</div>
                                     <div class="bullet"></div>
                                     <div class="text-primary">1 min ago</div>
                                 </div>

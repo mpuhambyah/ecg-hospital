@@ -7,13 +7,19 @@
     </form>
     <ul class="navbar-nav navbar-right">
         <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="<?= base_url() ?>assets/img/admin/avatar/avatar-1.png" class="rounded-circle mr-1">
+                <img alt="image" src="<?= base_url() ?>assets/img/dokter/avatar/avatar-1.png" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">Hi, <?= $user['name'] ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="features-profile.html" class="dropdown-item has-icon">
-                    <i class="far fa-user"></i> Profile
-                </a>
+                <?php if ($user['role_id'] == 1) { ?>
+                    <a href="<?= base_url() ?>dokter/profile" class="dropdown-item has-icon">
+                        <i class="far fa-user"></i> Profile
+                    </a>
+                <?php } else { ?>
+                    <a href="<?= base_url() ?>alat/profile" class="dropdown-item has-icon">
+                        <i class="far fa-user"></i> Profile
+                    </a>
+                <?php } ?>
                 <a class="dropdown-item has-icon text-danger" data-toggle="modal" data-target="#logoutModal">
                     <b><i class="fas fa-door-open"></i> Logout</b>
                 </a>
