@@ -11,110 +11,26 @@
                             <h4>History</h4>
                         </div>
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="activities">
-                                        <div class="activity">
-                                            <div class="activity-icon bg-primary text-white shadow-primary">
-                                                <i class="fas fa-download"></i>
-                                            </div>
-                                            <div class="activity-detail">
-                                                <div class="mb-2">
-                                                    <span class="text-job text-primary">2 September 2021</span>
-                                                    <span class="bullet"></span>
-                                                    <div class="float-right dropdown">
-                                                        <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                                                        <div class="dropdown-menu">
-                                                            <div class="dropdown-title">Options</div>
-                                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                                                            <a href="#" class="dropdown-item has-icon text-danger" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                                                        </div>
-                                                    </div>
+                            <?php foreach ($listActivity as $l) : ?>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="activities">
+                                            <div class="activity">
+                                                <div class="activity-icon bg-primary text-white shadow-primary">
+                                                    <i class="<?= $l['logo'] ?>"></i>
                                                 </div>
-                                                <p>Dr. Mpu mendownload file rekaman 1 Kusnandi</p>
+                                                <div class="activity-detail">
+                                                    <div class="mb-2">
+                                                        <span class="text-job text-primary"><?= date('d-m-Y H:i:s', $l['tanggal']) ?></span>
+                                                        <span class="bullet"></span>
+                                                    </div>
+                                                    <p><?= $l['nama_user'] ?> <?= $l['keterangan_activity'] ?> Rekaman <?= $l['id_rekaman'] ?> pada <?= $l['nama_pasien'] ?></p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="activities">
-                                        <div class="activity">
-                                            <div class="activity-icon bg-primary text-white shadow-primary">
-                                                <i class="fas fa-upload"></i>
-                                            </div>
-                                            <div class="activity-detail">
-                                                <div class="mb-2">
-                                                    <span class="text-job text-primary">2 September 2021</span>
-                                                    <span class="bullet"></span>
-                                                    <div class="float-right dropdown">
-                                                        <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                                                        <div class="dropdown-menu">
-                                                            <div class="dropdown-title">Options</div>
-                                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                                                            <a href="#" class="dropdown-item has-icon text-danger" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p>Dr. Mpu mengupload hasil deteksi R dari rekaman 1 Kusnandi</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="activities">
-                                        <div class="activity">
-                                            <div class="activity-icon bg-primary text-white shadow-primary">
-                                                <i class="fas fa-upload"></i>
-                                            </div>
-                                            <div class="activity-detail">
-                                                <div class="mb-2">
-                                                    <span class="text-job text-primary">2 September 2021</span>
-                                                    <span class="bullet"></span>
-                                                    <div class="float-right dropdown">
-                                                        <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                                                        <div class="dropdown-menu">
-                                                            <div class="dropdown-title">Options</div>
-                                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                                                            <a href="#" class="dropdown-item has-icon text-danger" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p>Dr. Adi mengupload hasil deteksi R dari rekaman 1 Kusnandi</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="activities">
-                                        <div class="activity">
-                                            <div class="activity-icon bg-primary text-white shadow-primary">
-                                                <i class="fas fa-upload"></i>
-                                            </div>
-                                            <div class="activity-detail">
-                                                <div class="mb-2">
-                                                    <span class="text-job text-primary">1 September 2021</span>
-                                                    <span class="bullet"></span>
-                                                    <div class="float-right dropdown">
-                                                        <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                                                        <div class="dropdown-menu">
-                                                            <div class="dropdown-title">Options</div>
-                                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                                                            <a href="#" class="dropdown-item has-icon text-danger" data-confirm="Wait, wait, wait...|This action can't be undone. Want to take risks?" data-confirm-text-yes="Yes, IDC"><i class="fas fa-trash-alt"></i> Archive</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p>Dr. Adi mengupload hasil deteksi R dari rekaman 3 Kusnandi</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach ?>
                         </div>
                     </form>
                 </div>

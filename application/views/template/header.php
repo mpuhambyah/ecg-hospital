@@ -18,6 +18,15 @@
     <link href="<?= base_url() ?>assets/img/<?= $profile['logo'] ?>" rel="icon">
 </head>
 
+<style>
+    .bk {
+        background-image: url('<?= base_url() ?>assets/img/grid2.png');
+        /* background-repeat: no-repeat; */
+        background-size: contain;
+        background-position: center;
+    }
+</style>
+
 <body>
     <div id="app">
         <div class="main-wrapper">

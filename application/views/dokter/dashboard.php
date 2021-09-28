@@ -13,67 +13,21 @@
                         <div class="table-responsive table-invoice">
                             <table class="table table-striped">
                                 <tr>
-                                    <th>ID Alat</th>
+                                    <th>Alat</th>
                                     <th>Nama</th>
-                                    <th>Status</th>
-                                    <th>Due Date</th>
+                                    <th>Alamat</th>
                                     <th>Action</th>
                                 </tr>
-                                <tr>
-                                    <td><a href="#">A-123</a></td>
-                                    <td class="font-weight-600">Kusnandi</td>
-                                    <td>
-                                        <div class="badge badge-warning">Uncheked</div>
-                                    </td>
-                                    <td>September 19, 2021</td>
-                                    <td>
-                                        <a href="<?= base_url() ?>dokter/listRecord/1/1" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">B-123</a></td>
-                                    <td class="font-weight-600">Hasan Basri</td>
-                                    <td>
-                                        <div class="badge badge-success">Checked</div>
-                                    </td>
-                                    <td>September 21, 2021</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">C-123</a></td>
-                                    <td class="font-weight-600">Muhamad Nuruzzaki</td>
-                                    <td>
-                                        <div class="badge badge-warning">Uncheked</div>
-                                    </td>
-                                    <td>September 22, 2021</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">D-123</a></td>
-                                    <td class="font-weight-600">Agung Ardiansyah</td>
-                                    <td>
-                                        <div class="badge badge-warning">Uncheked</div>
-                                    </td>
-                                    <td>September 22, 2021</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">E-123</a></td>
-                                    <td class="font-weight-600">Ardian Rahardiansyah</td>
-                                    <td>
-                                        <div class="badge badge-success">Checked</div>
-                                    </td>
-                                    <td>September 28, 2021</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Detail</a>
-                                    </td>
-                                </tr>
+                                <?php foreach ($listPasien as $l) : ?>
+                                    <tr>
+                                        <td><?= $l['nama_alat'] ?></td>
+                                        <td class="font-weight-600"><?= $l['nama'] ?></td>
+                                        <td><?= $l['alamat'] ?></td>
+                                        <td>
+                                            <a href="<?= base_url() ?>dokter/listRecord/<?= $l['id'] ?>" class="btn btn-primary">Detail</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
                             </table>
                         </div>
                     </div>
@@ -85,45 +39,29 @@
                         <div class="card-icon">
                             <i class="far fa-question-circle"></i>
                         </div>
-                        <h4>3</h4>
+                        <h4><?= $total ?></h4>
                         <div class="card-description">Pasien belum di crosscheck</div>
                     </div>
                     <div class="card-body p-0">
-                        <div class="tickets-list">
-                            <a href="#" class="ticket-item">
-                                <div class="ticket-title">
-                                    <h4>Rekaman 1</h4>
+                        <?php if ($total > 0) { ?>
+                            <?php foreach ($listPasienUnchecked as $l) : ?>
+                                <div class="tickets-list">
+                                    <a href="<?= base_url() ?>dokter/record/<?= $l['id'] . "/" . $l['id_rekaman'] ?>" class="ticket-item">
+                                        <div class="ticket-title">
+                                            <h4>Rekaman <?= $l['id_rekaman'] ?></h4>
+                                        </div>
+                                        <div class="ticket-info">
+                                            <div><?= $l['nama'] ?></div>
+                                            <div class="bullet"></div>
+                                            <div class="text-primary"><?= date('d-m-Y H:i:s', $l['tanggal']) ?></div>
+                                        </div>
+                                    </a>
+                                <?php endforeach ?>
+                                <a href="#" class="ticket-item ticket-more">
+                                    View All <i class="fas fa-chevron-right"></i>
+                                </a>
                                 </div>
-                                <div class="ticket-info">
-                                    <div>Kusnandi</div>
-                                    <div class="bullet"></div>
-                                    <div class="text-primary">1 min ago</div>
-                                </div>
-                            </a>
-                            <a href="#" class="ticket-item">
-                                <div class="ticket-title">
-                                    <h4>Rekaman 3</h4>
-                                </div>
-                                <div class="ticket-info">
-                                    <div>Rizal Fakhri</div>
-                                    <div class="bullet"></div>
-                                    <div>2 hours ago</div>
-                                </div>
-                            </a>
-                            <a href="#" class="ticket-item">
-                                <div class="ticket-title">
-                                    <h4>Rekaman 5</h4>
-                                </div>
-                                <div class="ticket-info">
-                                    <div>Syahdan Ubaidillah</div>
-                                    <div class="bullet"></div>
-                                    <div>6 hours ago</div>
-                                </div>
-                            </a>
-                            <a href="features-tickets.html" class="ticket-item ticket-more">
-                                View All <i class="fas fa-chevron-right"></i>
-                            </a>
-                        </div>
+                            <?php } ?>
                     </div>
                 </div>
             </div>

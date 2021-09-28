@@ -1,102 +1,651 @@
-var options = {
-	series: [{
-		name: 'voltage',
-		data: [1.493, 1.477, 1.497, 1.51, 1.5, 1.523, 1.546, 1.605, 1.634, 1.644, 1.624, 1.627, 1.65, 1.611, 1.598, 1.601, 1.595, 1.562, 1.549, 1.497, 1.51, 1.513, 1.52, 1.497, 1.444, 1.428, 1.389, 1.386, 1.386, 1.376, 1.363, 1.33, 1.304, 1.317, 1.314, 1.297, 1.271, 1.245, 1.222, 1.17, 0.98, 0.788, 0.67, 0.595, 0.575, 0.588, 0.637, 0.66, 0.686, 0.693, 0.706, 0.719, 0.725, 0.771, 0.801, 0.85, 0.984, 1.075, 1.101, 1.144, 1.255, 1.343, 1.373, 1.382, 1.376, 1.493, 1.559, 1.644, 1.703, 1.729, 1.778, 1.827, 1.899, 2.026, 2.17, 2.268, 2.288, 2.141, 1.977, 1.886, 1.814, 1.765, 1.768, 1.725, 1.686, 1.654, 1.582, 1.549, 1.529, 1.507, 1.533, 1.556, 1.552, 1.529, 1.467, 1.428, 1.412, 1.412, 1.399, 1.395, 1.412, 1.428, 1.415, 1.363, 1.346, 1.343, 1.32, 1.304, 1.314, 1.314, 1.32, 1.425, 1.562, 1.791, 1.977, 2.118, 2.183, 2.212, 2.046, 1.65, 1.288, 1.186, 1.212, 1.252, 1.294, 1.317, 1.34, 1.356, 1.363, 1.376, 1.363, 1.346, 1.314, 1.317, 1.35, 1.356, 1.366, 1.422, 1.422, 1.408, 1.395, 1.392, 1.389, 1.405, 1.389, 1.415, 1.438, 1.422, 1.386, 1.386, 1.418, 1.435, 1.464, 1.48, 1.48, 1.458, 1.438, 1.464, 1.497, 1.51, 1.503, 1.477, 1.49, 1.503, 1.526, 1.546, 1.552, 1.556, 1.556, 1.588, 1.631, 1.631, 1.637, 1.686, 1.709, 1.68, 1.654, 1.644, 1.66, 1.654, 1.621, 1.588, 1.559, 1.523, 1.513, 1.493, 1.467, 1.451, 1.438, 1.399, 1.402, 1.382, 1.382, 1.402, 1.428, 1.422, 1.438, 1.405, 1.376, 1.415, 1.454, 1.484, 1.497, 1.477, 1.471, 1.474, 1.461, 1.435, 1.425, 1.392, 1.389, 1.408, 1.441, 1.441, 1.418, 1.422, 1.435, 1.454, 1.471, 1.467, 1.451, 1.461, 1.458, 1.438, 1.461, 1.467, 1.464, 1.464, 1.458, 1.458, 1.477, 1.484, 1.49, 1.513, 1.536, 1.556, 1.578, 1.569, 1.592, 1.621, 1.654, 1.624, 1.627, 1.624, 1.634, 1.66, 1.663, 1.605, 1.539, 1.5, 1.487, 1.52, 1.529, 1.529, 1.529, 1.542, 1.549, 1.533, 1.493, 1.412, 1.425, 1.458, 1.458, 1.438, 1.435, 1.474, 1.536, 1.562, 1.559, 1.523, 1.507, 1.484, 1.48, 1.51, 1.673, 1.843, 2.049, 2.212, 2.225, 2.199, 2.222, 2.052, 1.569, 1.304, 1.255, 1.34, 1.461, 1.471, 1.402, 1.428, 1.477, 1.461, 1.431, 1.493, 1.582, 1.523, 1.497, 1.546, 1.507, 1.516, 1.52, 1.5, 1.513, 1.5, 1.461, 1.448, 1.523, 1.556, 1.533, 1.526, 1.52, 1.52, 1.529, 1.533, 1.513, 1.542, 1.507, 1.422, 1.412, 1.431, 1.428, 1.356, 1.199, 0.99, 0.807, 0.755, 0.775, 0.827, 0.895, 0.918, 0.925, 0.987, 1.056, 1.069, 1.088, 1.18, 1.219, 1.294, 1.343, 1.376, 1.441, 1.526, 1.601, 1.608, 1.641, 1.729, 1.768, 1.784, 1.833, 1.856, 1.876, 1.82, 1.781, 1.771, 1.758, 1.794, 1.908, 2, 2.072, 2.085, 2.056, 2.003, 1.905, 1.797, 1.729, 1.67, 1.631, 1.582, 1.546, 1.536, 1.542, 1.523, 1.51, 1.507, 1.513, 1.487, 1.516, 1.529, 1.51, 1.5, 1.546, 1.559, 1.549, 1.5, 1.513, 1.48, 1.503, 1.536, 1.49, 1.49, 1.529, 1.526, 1.51, 1.52, 1.529, 1.484, 1.467, 1.503, 1.523, 1.529, 1.529, 1.539, 1.529, 1.556, 1.578, 1.562, 1.572, 1.595, 1.634, 1.676, 1.69, 1.673, 1.683, 1.618, 1.582, 1.585, 1.588, 1.627, 1.68, 1.676, 1.641, 1.559, 1.493, 1.52, 1.536, 1.526, 1.48, 1.542, 1.533, 1.493, 1.493, 1.493, 1.49, 1.48, 1.418, 1.402, 1.451, 1.458, 1.444, 1.507, 1.735, 1.977, 2.16, 2.245, 2.265, 2.288, 2.212, 1.801, 1.34, 1.232, 1.301, 1.346, 1.343, 1.33, 1.353, 1.337, 1.346, 1.353, 1.31, 1.307, 1.294, 1.297, 1.307, 1.248, 1.271, 1.327, 1.363, 1.399, 1.412, 1.376, 1.382, 1.386, 1.422, 1.408, 1.392, 1.389, 1.399, 1.428, 1.425, 1.399, 1.399, 1.399, 1.431, 1.435, 1.444, 1.464, 1.454, 1.444, 1.458, 1.471, 1.474, 1.471, 1.497, 1.513, 1.529, 1.556, 1.572, 1.608, 1.644, 1.657, 1.66, 1.67, 1.683, 1.667, 1.663, 1.667, 1.716, 1.735, 1.693, 1.66, 1.621, 1.592, 1.572, 1.572, 1.552, 1.507, 1.451, 1.431, 1.458, 1.5, 1.52, 1.507, 1.487, 1.477, 1.474, 1.474, 1.503, 1.536, 1.539, 1.51, 1.513, 1.526, 1.513, 1.48, 1.467, 1.484, 1.493, 1.516, 1.52, 1.562, 1.575, 1.549, 1.503, 1.552, 1.592, 1.523, 1.487, 1.5, 1.523, 1.542, 1.536, 1.497, 1.507, 1.526, 1.549, 1.526, 1.503, 1.51, 1.523, 1.51, 1.467, 1.5, 1.556, 1.536, 1.588, 1.608, 1.627, 1.601, 1.618, 1.634, 1.66, 1.686, 1.667, 1.69, 1.686, 1.68, 1.657, 1.631, 1.601, 1.575, 1.575, 1.572, 1.569, 1.559, 1.526, 1.5, 1.464, 1.435, 1.395, 1.363, 1.356, 1.307, 1.275, 1.196, 1.042, 0.879, 0.765, 0.66, 0.614, 0.637, 0.706, 0.801, 0.882, 1.033, 1.252, 1.529, 1.797, 1.964, 1.98, 1.997, 1.876, 1.438, 1.144, 1.137, 1.216, 1.324, 1.464, 1.539, 1.529, 1.51, 1.49, 1.5, 1.559, 1.621, 1.611, 1.641, 1.69, 1.752, 1.81, 1.837, 1.899, 1.935, 1.873, 1.804, 1.716, 1.657, 1.627, 1.611, 1.611, 1.585, 1.546, 1.542, 1.552, 1.542, 1.585, 1.601, 1.601, 1.601, 1.585, 1.601, 1.598, 1.592, 1.588, 1.605, 1.618, 1.618, 1.631]
-	}],
-	chart: {
-		type: 'area',
-		stacked: false,
-		height: 350,
-		zoom: {
-			type: 'x',
-			enabled: true,
-			autoScaleYaxis: true
-		},
-		toolbar: {
-			show: true
+var elem = document.documentElement;
+
+var url = window.location.href.split('/');
+if (url.includes('record')) {
+	document.getElementById("btn_convert").addEventListener("click", function () {
+		$.ajax({
+			url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
+			type: 'POST',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			success: function (response) {
+				html2canvas(document.getElementById("html-content-holder"), {
+					allowTaint: true,
+					useCORS: true
+				}).then(function (canvas) {
+					var anchorTag = document.createElement("a");
+					document.body.appendChild(anchorTag);
+					document.getElementById("previewImg").appendChild(canvas);
+					anchorTag.download = response.nama + "_rekaman" + url[7] + ".jpg";
+					anchorTag.href = canvas.toDataURL();
+					anchorTag.target = '_blank';
+					anchorTag.click();
+				});
+				$.ajax({
+					url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/5",
+					type: 'POST',
+					dataType: 'json',
+					async: true,
+					cache: false,
+					success: function (response) {
+						console.log(response)
+					},
+					error: function (thrownError) {
+
+					}
+				});
+			},
+			error: function (thrownError) {
+				console.log(thrownError)
+			}
+		});
+	});
+
+	function download() {
+		$.ajax({
+			url: base + "data/getdata/" + url[6] + "/" + url[7],
+			type: 'POST',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			success: function (response) {
+				console.log(response);
+				//define the heading for each row of the data  
+				var csv = 'avf;avl;avr;i;ii;iii;v1;v2;v3;v4;v5;v6\n';
+
+				//merge the data with CSV  
+				response.forEach(function (row) {
+					const resRow = Object.values(row);
+					csv += resRow.join(';');
+					csv += "\n";
+				});
+
+				var hiddenElement = document.createElement('a');
+				hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+				hiddenElement.target = '_blank';
+
+				//provide the name for the CSV file to be downloaded 
+				$.ajax({
+					url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
+					type: 'POST',
+					dataType: 'json',
+					async: true,
+					cache: false,
+					success: function (response) {
+						hiddenElement.download = response.nama + "_recordAll_rekaman" + url[7] + '.csv';
+						hiddenElement.click();
+						$.ajax({
+							url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/1",
+							type: 'POST',
+							dataType: 'json',
+							async: true,
+							cache: false,
+							success: function (response) {
+								console.log(response)
+							},
+							error: function (thrownError) {
+
+							}
+						});
+					},
+					error: function (thrownError) {
+						console.log(thrownError)
+					}
+				});
+			},
+			error: function (thrownError) {
+				console.log(thrownError)
+			}
+		});
+	}
 
 
+	function downloadII() {
+		$.ajax({
+			url: base + "data/getdataII/" + url[6] + "/" + url[7],
+			type: 'POST',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			success: function (response) {
+				console.log(response);
+				//define the heading for each row of the data  
+				var csv = 'ii\n';
 
+				//merge the data with CSV  
+				response.forEach(function (row) {
+					const resRow = Object.values(row);
+					csv += resRow.join(';');
+					csv += "\n";
+				});
+
+				var hiddenElement = document.createElement('a');
+				hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+				hiddenElement.target = '_blank';
+
+				//provide the name for the CSV file to be downloaded 
+				$.ajax({
+					url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
+					type: 'POST',
+					dataType: 'json',
+					async: true,
+					cache: false,
+					success: function (response) {
+						hiddenElement.download = response.nama + "_recordII_rekaman" + url[7] + '.csv';
+						hiddenElement.click();
+						$.ajax({
+							url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/1",
+							type: 'POST',
+							dataType: 'json',
+							async: true,
+							cache: false,
+							success: function (response) {
+								console.log(response)
+							},
+							error: function (thrownError) {
+
+							}
+						});
+					},
+					error: function (thrownError) {
+						console.log(thrownError)
+					}
+				});
+			},
+			error: function (thrownError) {
+				console.log(thrownError)
+			}
+		});
+	}
+
+	function openFullscreen() {
+		if (elem.requestFullscreen) {
+			elem.requestFullscreen();
+			$('body').addClass('sidebar-mini');
+			$('#FS').prop("hidden", true);
+			$('#closeFS').prop("hidden", false);
+			window.parent.document.body.style.zoom = 0.75;
+		} else if (elem.webkitRequestFullscreen) {
+			/* Safari */
+			elem.webkitRequestFullscreen();
+			$('body').addClass('sidebar-mini');
+			window.parent.document.body.style.zoom = 0.75;
+		} else if (elem.msRequestFullscreen) {
+			/* IE11 */
+			elem.msRequestFullscreen();
+			$('body').addClass('sidebar-mini');
+			window.parent.document.body.style.zoom = 0.75;
 		}
-	},
-	dataLabels: {
-		enabled: false
-	},
-	markers: {
-		size: 0,
-	},
-	fill: {
-		type: 'gradient',
-		gradient: {
-			shadeIntensity: 1,
-			inverseColors: false,
-			opacityFrom: 0.5,
-			opacityTo: 0,
-			stops: [0, 90, 100]
-		},
-	},
-	xaxis: {
-		min: undefined,
-		max: 100,
-		labels: {
-			show: false
-		},
-		tooltip: {
-			enabled: true
+	}
+
+	function closeFullscreen() {
+		if (document.exitFullscreen) {
+			document.exitFullscreen();
+			$('body').removeClass('sidebar-mini');
+			$('#FS').prop("hidden", false);
+			$('#closeFS').prop("hidden", true);
+			window.parent.document.body.style.zoom = 1;
+		} else if (document.webkitExitFullscreen) {
+			/* Safari */
+			document.webkitExitFullscreen();
+			$('body').removeClass('sidebar-mini');
+			window.parent.document.body.style.zoom = 1;
+		} else if (document.msExitFullscreen) {
+			/* IE11 */
+			document.msExitFullscreen();
+			$('body').removeClass('sidebar-mini');
+			window.parent.document.body.style.zoom = 1;
 		}
-	},
-	yaxis: {
+	}
+
+	var options = {
 		title: {
-			text: 'V1'
+			text: '',
+			align: 'center',
 		},
-		labels: {
-			show: false
+		series: [{
+			name: 'voltage',
+			data: []
+		}],
+		chart: {
+			type: 'area',
+			stacked: false,
+			height: 350,
+			width: '100%',
+			toolbar: {
+				show: true
+			},
+			sparkline: {
+				enabled: true
+			}
 		},
-	},
-	grid: {
-		show: true,
-		borderColor: '#F4E1E6',
-		position: 'back',
+		dataLabels: {
+			enabled: false
+		},
+		markers: {
+			size: 0,
+		},
+		fill: {
+			type: 'solid',
+			opacity: 0,
+		},
 		xaxis: {
-			lines: {
-				show: true,
+			min: undefined,
+			max: 200,
+			labels: {
+				show: false
+			},
+			tooltip: {
+				enabled: true
 			}
 		},
 		yaxis: {
-			lines: {
-				show: true
-			}
+
+			labels: {
+				show: false
+			},
 		},
-	},
-	colors: ['#ff2121']
-};
+		colors: ['#ff2121']
+	};
 
-var url = window.location.href.split('/');
+	$(document).ready(function () {
+		$('#check').removeAttr('hidden');
+		$.ajax({
+			url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
+			type: 'POST',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			success: function (response) {
+				if (response.status == 1) {
+					$('#check').removeClass('btn-secondary');
+					$('#check').addClass('btn-success');
+				} else {
+					$('#check').removeClass('btn-success');
+					$('#check').addClass('btn-secondary');
+				}
+			},
+			error: function (thrownError) {
+				console.log(thrownError)
+			}
+		});
+	});
+
+	function checked() {
+		$.ajax({
+			url: base + "dokter/checkDataRekaman/" + url[6] + "/" + url[7],
+			type: 'POST',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			success: function (response) {
+				if (response.status == 1) {
+					$('#check').removeClass('btn-secondary');
+					$('#check').addClass('btn-success');
+					$.ajax({
+						url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/3",
+						type: 'POST',
+						dataType: 'json',
+						async: true,
+						cache: false,
+						success: function (response) {
+							console.log(response)
+						},
+						error: function (thrownError) {
+
+						}
+					});
+				} else {
+					$('#check').removeClass('btn-success');
+					$('#check').addClass('btn-secondary');
+					$.ajax({
+						url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/5",
+						type: 'POST',
+						dataType: 'json',
+						async: true,
+						cache: false,
+						success: function (response) {
+							console.log(response)
+						},
+						error: function (thrownError) {
+
+						}
+					});
+				};
+			},
+			error: function (thrownError) {
+				console.log(thrownError)
+			}
+		});
+	}
+
+	var chart_i = new ApexCharts(document.querySelector("#chart_i"), options);
+	var chart_ii = new ApexCharts(document.querySelector("#chart_ii"), options);
+	var chart_iii = new ApexCharts(document.querySelector("#chart_iii"), options);
+	var chart_avr = new ApexCharts(document.querySelector("#chart_avr"), options);
+	var chart_avl = new ApexCharts(document.querySelector("#chart_avl"), options);
+	var chart_avf = new ApexCharts(document.querySelector("#chart_avf"), options);
+	var chart_v1 = new ApexCharts(document.querySelector("#chart_v1"), options);
+	var chart_v2 = new ApexCharts(document.querySelector("#chart_v2"), options);
+	var chart_v3 = new ApexCharts(document.querySelector("#chart_v3"), options);
+	var chart_v4 = new ApexCharts(document.querySelector("#chart_v4"), options);
+	var chart_v5 = new ApexCharts(document.querySelector("#chart_v5"), options);
+	var chart_v6 = new ApexCharts(document.querySelector("#chart_v6"), options);
+	var chart_ii_full = new ApexCharts(document.querySelector("#chart_ii_full"), options);
+
+	chart_i.render();
+	chart_ii.render();
+	chart_iii.render();
+	chart_avr.render();
+	chart_avl.render();
+	chart_avf.render();
+	chart_v1.render();
+	chart_v2.render();
+	chart_v3.render();
+	chart_v4.render();
+	chart_v5.render();
+	chart_v6.render();
+	chart_ii_full.render();
+	chart_i.updateOptions({
+		title: {
+			text: 'i'
+		},
+		yaxis: {
+			show: false,
+			min: 3,
+			max: 5
+		},
+		xaxis: {
+			min: 0,
+			max: 199,
+		}
+	});
+	chart_ii.updateOptions({
+		title: {
+			text: 'ii'
+		},
+		yaxis: {
+			show: false,
+			min: 0,
+			max: 2
+		},
+		xaxis: {
+			min: 0,
+			max: 199,
+		}
+	});
+	chart_iii.updateOptions({
+		title: {
+			text: 'iii'
+		},
+		yaxis: {
+			show: false,
+			min: -1,
+			max: 1
+		},
+		xaxis: {
+			min: 0,
+			max: 199,
+		}
+	});
+	chart_avr.updateOptions({
+		title: {
+			text: 'avr'
+		},
+		yaxis: {
+			show: false,
+			min: -4,
+			max: -1
+		},
+		xaxis: {
+			min: 200,
+			max: 399,
+		}
+	});
+	chart_avl.updateOptions({
+		title: {
+			text: 'avl'
+		},
+		yaxis: {
+			show: false,
+			min: 1,
+			max: 2.5
+		},
+		xaxis: {
+			min: 200,
+			max: 399,
+		}
+	});
+	chart_avf.updateOptions({
+		title: {
+			text: 'avf'
+		},
+		yaxis: {
+			show: false,
+			min: -0.5,
+			max: 1.5
+		},
+		xaxis: {
+			min: 200,
+			max: 399,
+		}
+	});
+	chart_v1.updateOptions({
+		title: {
+			text: 'v1'
+		},
+		yaxis: {
+			show: false,
+			min: -4,
+			max: -2
+		},
+		xaxis: {
+			min: 400,
+			max: 599,
+		}
+	});
+	chart_v2.updateOptions({
+		title: {
+			text: 'v2'
+		},
+		yaxis: {
+			show: false,
+			min: -3.8,
+			max: -2.3
+		},
+		xaxis: {
+			min: 400,
+			max: 599,
+		}
+	});
+	chart_v3.updateOptions({
+		title: {
+			text: 'v3'
+		},
+		yaxis: {
+			show: false,
+			min: -4.5,
+			max: -2
+		},
+		xaxis: {
+			min: 400,
+			max: 599,
+		}
+	});
+	chart_v4.updateOptions({
+		title: {
+			text: 'v4'
+		},
+		yaxis: {
+			show: false,
+			min: -5.5,
+			max: -2
+		},
+		xaxis: {
+			min: 600,
+			max: 799,
+		}
+	});
+	chart_v5.updateOptions({
+		title: {
+			text: 'v5'
+		},
+		yaxis: {
+			show: false,
+			min: 1,
+			max: 3
+		},
+		xaxis: {
+			min: 600,
+			max: 799,
+		}
+	});
+	chart_v6.updateOptions({
+		title: {
+			text: 'v6'
+		},
+		yaxis: {
+			show: false,
+			min: 5.5,
+			max: 7.5
+		},
+		xaxis: {
+			min: 600,
+			max: 799,
+		}
+	});
+	chart_ii_full.updateOptions({
+		title: {
+			text: 'ii'
+		},
+		xaxis: {
+			min: 0,
+			max: 799,
+		},
+		yaxis: {
+			show: false,
+			min: 0,
+			max: 2,
+		}
+
+	});
+
+	var arai = []
+	$.ajax({
+		url: base + "data/getdata/" + url[6] + "/" + url[7],
+		type: 'POST',
+		dataType: 'json',
+		async: true,
+		cache: false,
+		success: function (response) {
+			let i = response.map(({
+				i
+			}) => i);
+			let ii = response.map(({
+				ii
+			}) => ii);
+			let iii = response.map(({
+				iii
+			}) => iii);
+			let avr = response.map(({
+				avr
+			}) => avr);
+			let avl = response.map(({
+				avl
+			}) => avl);
+			let avf = response.map(({
+				avf
+			}) => avf);
+			let v1 = response.map(({
+				v1
+			}) => v1);
+			let v2 = response.map(({
+				v2
+			}) => v2);
+			let v3 = response.map(({
+				v3
+			}) => v3);
+			let v4 = response.map(({
+				v4
+			}) => v4);
+			let v5 = response.map(({
+				v5
+			}) => v5);
+			let v6 = response.map(({
+				v6
+			}) => v6);
+
+			i = i.slice(0, 199);
+			ii_full = ii.slice(0, 799);
+			ii = ii.slice(0, 199);
+			iii = iii.slice(0, 199);
+			avr = avr.slice(0, 399);
+			avl = avl.slice(0, 399);
+			avf = avf.slice(0, 399);
+			v1 = v1.slice(0, 599);
+			v2 = v2.slice(0, 599);
+			v3 = v3.slice(0, 599);
+			v4 = v4.slice(0, 799);
+			v5 = v5.slice(0, 799);
+			v6 = v6.slice(0, 799);
 
 
-if (url.includes('record')) {
-	var chart = new ApexCharts(document.querySelector("#chart"), options);
-	var chart1 = new ApexCharts(document.querySelector("#chart1"), options);
-	var chart2 = new ApexCharts(document.querySelector("#chart2"), options);
-	var chart3 = new ApexCharts(document.querySelector("#chart3"), options);
-	var chart4 = new ApexCharts(document.querySelector("#chart4"), options);
-	var chart5 = new ApexCharts(document.querySelector("#chart5"), options);
-	var chart6 = new ApexCharts(document.querySelector("#chart6"), options);
-	var chart7 = new ApexCharts(document.querySelector("#chart7"), options);
-	var chart8 = new ApexCharts(document.querySelector("#chart8"), options);
-	var chart9 = new ApexCharts(document.querySelector("#chart9"), options);
-	var chart10 = new ApexCharts(document.querySelector("#chart10"), options);
-	var chart11 = new ApexCharts(document.querySelector("#chart11"), options);
-	chart.render();
-	chart1.render();
-	chart2.render();
-	chart3.render();
-	chart4.render();
-	chart5.render();
-	chart6.render();
-	chart7.render();
-	chart8.render();
-	chart9.render();
-	chart10.render();
-	chart11.render();
+			chart_i.updateSeries([{
+				name: 'voltage',
+				data: i,
+			}]);
+			chart_ii.updateSeries([{
+				name: 'voltage',
+				data: ii
+			}]);
+			chart_iii.updateSeries([{
+				name: 'voltage',
+				data: iii
+			}]);
+			chart_avr.updateSeries([{
+				name: 'voltage',
+				data: avr
+			}]);
+			chart_avl.updateSeries([{
+				name: 'voltage',
+				data: avl
+			}]);
+			chart_avf.updateSeries([{
+				name: 'voltage',
+				data: avf
+			}]);
+			chart_v1.updateSeries([{
+				name: 'voltage',
+				data: v1
+			}]);
+			chart_v2.updateSeries([{
+				name: 'voltage',
+				data: v2
+			}]);
+			chart_v3.updateSeries([{
+				name: 'voltage',
+				data: v3
+			}]);
+			chart_v4.updateSeries([{
+				name: 'voltage',
+				data: v4
+			}]);
+			chart_v5.updateSeries([{
+				name: 'voltage',
+				data: v5
+			}]);
+			chart_v6.updateSeries([{
+				name: 'voltage',
+				data: v6
+			}]);
+			chart_ii_full.updateSeries([{
+				name: 'voltage',
+				data: ii_full
+			}]);
+		},
+		error: function (thrownError) {
+			console.log(thrownError)
+		}
+	});
 }
