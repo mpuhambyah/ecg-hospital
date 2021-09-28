@@ -157,6 +157,18 @@ class Dokter extends CI_Controller
         $this->load->view('template/footer', $data);
     }
 
+    public function uploadFile()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $data['profile'] = $this->db->get('profile')->row_array();
+        $data['title'] = "Upload File";
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('template/navbar', $data);
+        $this->load->view('dokter/upload', $data);
+        $this->load->view('template/footer', $data);
+    }
+
     public function logData()
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
