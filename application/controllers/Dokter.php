@@ -150,6 +150,7 @@ class Dokter extends CI_Controller
         $data['title'] = "List Pasien";
         $this->load->model('M_dokter');
         $id = $this->uri->segment(3);
+        $data['pasien'] = $this->db->get_where('pasien', ['id' => $id])->row_array();
         $data['listRekaman'] = $this->M_dokter->listRekaman($id);
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);

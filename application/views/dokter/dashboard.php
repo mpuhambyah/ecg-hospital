@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive table-invoice">
-                            <table class="table table-striped">
+                            <table class="table table-striped text-center">
                                 <tr>
                                     <th>Alat</th>
                                     <th>Nama</th>

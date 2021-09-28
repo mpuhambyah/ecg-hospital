@@ -18,6 +18,7 @@
             <?php } elseif ($user['role_id'] == 2) { ?>
                 <li class="menu-header">Dashboard</li>
                 <li><a class="nav-link textnya" href="<?= base_url() ?>alat/"><i class="fas fa-users"></i> <span>List Pasien</span></a></li>
+                <li><a class="nav-link textnya" href="<?= base_url() ?>alat/tambahPasien"><i class="fas fa-user"></i><span>Tambah Pasien</span></a></li>
                 <li class="menu-header">Data</li>
                 <li><a class="nav-link textnya" href="<?= base_url() ?>alat/logdata"><i class="fas fa-database"></i> <span>Log Data</span></a></li>
             <?php } ?>

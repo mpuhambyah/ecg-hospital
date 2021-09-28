@@ -1,7 +1,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1><?= $listRekaman[0]['nama'] ?></h1>
+            <h1><?= $pasien['nama'] ?></h1>
         </div>
         <div class="row">
             <div class="col-md-12">

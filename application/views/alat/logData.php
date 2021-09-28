@@ -11,36 +11,23 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">ID Alat</th>
                                     <th scope="col">Nama</th>
                                     <th scope="col">Rekaman</th>
                                     <th scope="col">Tanggal</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Kusnandi</td>
-                                    <td>Rekaman 3</td>
-                                    <td>19 September 2021</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Kusnandi</td>
-                                    <td>Rekaman 2</td>
-                                    <td>1 September 2021</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Oktaviana</td>
-                                    <td>Rekaman 1</td>
-                                    <td>28 Oktober 2021</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Kusnandi</td>
-                                    <td>Rekaman 1</td>
-                                    <td>15 Oktober 2021</td>
-                                </tr>
+                                <?php $count = 1;
+                                foreach ($listPasien as $key => $l) : ?>
+                                    <tr>
+                                        <th scope="row"><?= $key + 1 ?></th>
+                                        <td><?= $l['nama_alat'] ?></td>
+                                        <td><?= $l['nama'] ?></td>
+                                        <td>Rekaman <?= $l['id_rekaman'] ?></td>
+                                        <td><?= date('d-m-Y H:i:s', $l['tanggal']) ?></td>
+                                    </tr>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>
