@@ -1,6 +1,54 @@
 var elem = document.documentElement;
 
 var url = window.location.href.split('/');
+
+$(".downloadFileCSV").click(function () {
+	const id = $(this).data("id");
+	console.log(id)
+	$.ajax({
+		url: base + "data/getDataFile/" + id,
+		type: 'POST',
+		dataType: 'json',
+		async: true,
+		cache: false,
+		success: function (response) {
+			console.log(response);
+			//define the heading for each row of the data  
+			var csv = 'annotation;ecg\n';
+
+			//merge the data with CSV  
+			response.forEach(function (row) {
+				const resRow = Object.values(row);
+				csv += resRow.join(';');
+				csv += "\n";
+			});
+
+			var hiddenElement = document.createElement('a');
+			hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+			hiddenElement.target = '_blank';
+
+			//provide the name for the CSV file to be downloaded 
+			$.ajax({
+				url: base + "data/getDataFilePasien/" + id,
+				type: 'POST',
+				dataType: 'json',
+				async: true,
+				cache: false,
+				success: function (response) {
+					hiddenElement.download = response.nama_pasien + "_rpeak_rekaman" + response.id_rekaman + '.csv';
+					hiddenElement.click();
+				},
+				error: function (thrownError) {
+					console.log(thrownError)
+				}
+			});
+		},
+		error: function (thrownError) {
+			console.log(thrownError)
+		}
+	});
+});
+
 if (url.includes('record')) {
 	document.getElementById("btn_convert").addEventListener("click", function () {
 		$.ajax({

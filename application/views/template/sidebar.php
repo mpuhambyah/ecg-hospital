@@ -10,6 +10,7 @@
             <?php if ($user['role_id'] == 1) { ?>
                 <li class="menu-header">Dashboard</li>
                 <li><a class="nav-link textnya" href="<?= base_url() ?>dokter/"><i class="fas fa-users"></i> <span>List Pasien</span></a></li>
+                <li><a class="nav-link textnya" href="<?= base_url() ?>dokter/listFile"><i class="fas fa-file-alt"></i> <span>List File</span></a></li>
                 <li><a class="nav-link textnya" href="<?= base_url() ?>dokter/uploadFile"><i class="fas fa-upload"></i> <span>Upload File</span></a></li>
                 <li class="menu-header">Data</li>
                 <li><a class="nav-link textnya" href="<?= base_url() ?>dokter/logdata"><i class="fas fa-database"></i> <span>Log Data</span></a></li>

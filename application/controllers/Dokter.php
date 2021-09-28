@@ -31,6 +31,21 @@ class Dokter extends CI_Controller
         $this->load->view('template/footer', $data);
     }
 
+
+    public function listFile()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $data['profile'] = $this->db->get('profile')->row_array();
+        $data['title'] = "List File";
+        $this->load->model('M_dokter');
+        $data['listFile'] = $this->M_dokter->listFile();
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('template/navbar', $data);
+        $this->load->view('dokter/listFile', $data);
+        $this->load->view('template/footer', $data);
+    }
+
     public function profile()
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
@@ -161,6 +176,7 @@ class Dokter extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         $data['profile'] = $this->db->get('profile')->row_array();
+        $data['listPasien'] = $this->db->get('pasien')->result_array();
         $data['title'] = "Upload File";
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
@@ -168,6 +184,66 @@ class Dokter extends CI_Controller
         $this->load->view('dokter/upload', $data);
         $this->load->view('template/footer', $data);
     }
+
+    public function list_pasien()
+    {
+        echo json_encode($this->db->get('pasien')->result_array());
+    }
+
+    public function list_rekaman()
+    {
+        echo json_encode($this->db->get_where('rekaman', ['id_pasien' => $this->input->post('id')])->result_array());
+    }
+
+    public function addFile()
+    {
+        $file = $_FILES['fileuser']['name'];
+
+        $config['upload_path'] = './assets/file/';
+        $config['allowed_types'] = 'csv';
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('fileuser')) {
+            $rDataUpload = [
+                "id_pasien" => $this->input->post('pasien', true),
+                "id_rekaman" => $this->input->post('rekaman', true),
+                "keterangan" => $this->input->post('keterangan', true),
+                "id_file" => $this->input->post('id_file', true),
+                "created_by" => $this->session->userdata('id'),
+                "created_at" => time()
+            ];
+            $this->db->insert('uploaded', $rDataUpload);
+            $this->db->from('uploaded');
+            $this->db->order_by('id', 'DESC');
+            $this->db->limit('1');
+            $id_upload = $this->db->get()->row_array();
+            $flag = true;
+            $data = fopen(base_url('assets/file/') . $file, "r");
+            while (!feof($data)) {
+                $csv = fgetcsv($data, 0, ';');
+                if ($flag) {
+                    $flag = false;
+                    continue;
+                }
+                $rPuncakData = [
+                    "annotation" => $csv[0],
+                    "ecg" => $csv[1],
+                    "id_upload" => $id_upload['id']
+                ];
+                $this->db->insert('rpeak', $rPuncakData);
+            }
+
+            fclose($data);
+            unlink(FCPATH . 'assets/file/' . $file);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">File berhasil di upload</div>');
+            redirect(base_url('dokter/uploadFile'));
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
+            redirect(base_url('dokter/uploadFile'));
+        }
+    }
+
 
     public function logData()
     {

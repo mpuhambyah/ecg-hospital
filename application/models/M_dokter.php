@@ -40,11 +40,22 @@ class M_dokter extends CI_Model
 
   public function listActivity()
   {
-    $query = "SELECT activities.id as 'id', activities.id_rekaman, activities.created_at as 'tanggal', user.name as 'nama_user', pasien.nama 'nama_pasien', activities_list.nama as 'nama_activity', 
+    $query = "SELECT activities.id as 'id', activities.id_rekaman, activities.created_at as 'tanggal', user.name as 'nama_user', pasien.nama as 'nama_pasien', activities_list.nama as 'nama_activity', 
     activities_list.keterangan as 'keterangan_activity', activities_list.logo as 'logo'
     FROM activities 
     INNER JOIN activities_list ON activities.id_activity = activities_list.id 
     INNER JOIN pasien ON activities.target = pasien.id INNER JOIN user ON activities.id_user = user.id ORDER BY activities.id DESC";
+
+    return $this->db->query($query)->result_array();
+  }
+
+  public function listFile()
+  {
+    $query = "SELECT uploaded.id as 'id', user.name as 'nama_user', pasien.nama as'nama_pasien', uploaded.created_at as 'tanggal', uploaded.id_rekaman, uploaded.keterangan
+    FROM uploaded 
+    INNER JOIN pasien ON pasien.id = uploaded.id_pasien 
+    INNER JOIN user ON user.id = uploaded.created_by 
+    ORDER BY uploaded.id DESC";
 
     return $this->db->query($query)->result_array();
   }

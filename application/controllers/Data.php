@@ -17,6 +17,20 @@ class Data extends CI_Controller
         echo json_encode($data);
     }
 
+    public function getDataFile($id)
+    {
+        $this->load->model('M_data');
+        $data = $this->M_data->dataFile($id);
+        echo json_encode($data);
+    }
+
+    public function getDataFilePasien($id)
+    {
+        $this->load->model('M_data');
+        $data = $this->M_data->getDataFilePasien($id);
+        echo json_encode($data);
+    }
+
     public function getdataPasien($id_pasien, $id)
     {
         $data = $this->db->get_where('pasien', ['id' => $id_pasien])->row_array();

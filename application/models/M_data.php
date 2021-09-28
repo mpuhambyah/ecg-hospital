@@ -16,4 +16,24 @@ class M_data extends CI_Model
 
     return $this->db->query($query)->result_array();
   }
+
+  public function dataFile($id)
+  {
+    $query = "SELECT rpeak.annotation, rpeak.ecg
+    FROM rpeak WHERE rpeak.id_upload = $id
+    ORDER BY rpeak.id DESC";
+
+    return $this->db->query($query)->result_array();
+  }
+
+  public function getDataFilePasien($id)
+  {
+    $query = "SELECT uploaded.id as 'id', user.name as 'nama_user', pasien.nama as'nama_pasien', uploaded.created_at as 'tanggal', uploaded.id_rekaman, uploaded.keterangan
+    FROM uploaded 
+    INNER JOIN pasien ON pasien.id = uploaded.id_pasien 
+    INNER JOIN user ON user.id = uploaded.created_by 
+    WHERE uploaded.id = $id";
+
+    return $this->db->query($query)->row_array();
+  }
 }
