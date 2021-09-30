@@ -33,8 +33,6 @@ class App():
 
         self.button.grid(column=1, row=0)
 
-      
-
     def add_option(self):
         nama = []
         df = pd.read_json('http://localhost/ecg-hospital/data/alatGetDataPasien/c4ca4238a0b923820dcc509a6f75849b')

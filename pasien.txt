@@ -1,4 +1,5 @@
-id,id_alat,NIK,nama,alamat,nomor_hp
-1,1,3522150709950005,Kusnadi,"Jl. Keputih Tegal No. 08, Surabaya",812215152315
-3,1,3514011603980001,Mpu Hambyah,"Jl. Keputih Gang 1 No. 10, Surabaya",812215152315
-5,1,9876543210987654,Ahmad Zakiy,Jl. Taman Jati Petamburan No.12A Jakarta Pusat,812215152315
+id,id_alat,NIK,nama,alamat
+1,1,3522150709950005,Kusnadi,"Jl. Keputih Tegal No. 08, Surabaya"
+3,1,3514011603980001,Mpu Hambyah,"Jl. Keputih Gang 1 No. 10, Surabaya"
+5,1,9876543210987654,Ahmad Zakiy,Jl. Taman Jati Petamburan No.12A Jakarta Pusat
+6,1,123,Faishal,Sini
