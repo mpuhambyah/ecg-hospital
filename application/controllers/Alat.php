@@ -117,16 +117,30 @@ class Alat extends CI_Controller
         $this->load->view('template/footer', $data);
     }
 
-    public function editPasien()
+    public function editPasien($id)
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         $data['profile'] = $this->db->get('profile')->row_array();
+        $data['pasien'] = $this->db->get_where('pasien', ['id' => $id])->row_array();
         $data['title'] = "List Pasien";
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/navbar', $data);
         $this->load->view('alat/editPasien', $data);
         $this->load->view('template/footer', $data);
+    }
+
+    public function editPasienAction($id)
+    {
+        $data = [
+            "NIK" => $this->input->post('nik'),
+            "nama" => $this->input->post('nama'),
+            "alamat" => $this->input->post('alamat'),
+        ];
+        $this->db->where('id', $id);
+        $this->db->update('pasien', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pasien berhasil diubah</div>');
+        redirect(base_url('alat'));
     }
 
     public function logData()

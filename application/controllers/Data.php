@@ -3,6 +3,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Data extends CI_Controller
 {
+    public function alatGetDataPasien($id)
+    {
+        $alat = $this->db->get_where('alat', ['key_api' => $id])->row_array();
+        $id = $alat['id'];
+        $data = $this->db->get_where('pasien', ['id_alat' => $id])->result_array();
+        echo json_encode($data);
+    }
+
     public function getdata($id_pasien, $id)
     {
         $this->load->model('M_data');

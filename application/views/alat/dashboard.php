@@ -16,6 +16,7 @@
                                 <tr>
                                     <th>Alat</th>
                                     <th>Nama</th>
+                                    <th>NIK</th>
                                     <th>Alamat</th>
                                     <th>Action</th>
                                 </tr>
@@ -23,9 +24,11 @@
                                     <tr>
                                         <td><?= $l['nama_alat'] ?></td>
                                         <td class="font-weight-600"><?= $l['nama'] ?></td>
+                                        <td><?= $l['nik'] ?></td>
                                         <td><?= $l['alamat'] ?></td>
                                         <td>
                                             <a href="<?= base_url() ?>alat/listRecord/<?= $l['id'] ?>" class="btn btn-primary">Detail</a>
+                                            <a href="<?= base_url() ?>alat/editPasien/<?= $l['id'] ?>" class="btn btn-primary">Edit</a>
                                             <a data-toggle="modal" data-target="#deleteModal" class="deletePasien btn btn-danger" data-id=<?= $l['id'] ?> style="color:white">Delete</a>
                                         </td>
                                     </tr>
