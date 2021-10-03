@@ -92,7 +92,7 @@ if (url.includes('record')) {
 
 	function download() {
 		$.ajax({
-			url: base + "data/getdata/" + url[6] + "/" + url[7],
+			url: base + "data/getdataFull/" + url[6] + "/" + url[7],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -100,7 +100,7 @@ if (url.includes('record')) {
 			success: function (response) {
 				console.log(response);
 				//define the heading for each row of the data  
-				var csv = 'avf;avl;avr;i;ii;iii;v1;v2;v3;v4;v5;v6\n';
+				var csv = 'timestamp;avf;avl;avr;i;ii;iii;v1;v2;v3;v4;v5;v6\n';
 
 				//merge the data with CSV  
 				response.forEach(function (row) {
@@ -148,7 +148,6 @@ if (url.includes('record')) {
 		});
 	}
 
-
 	function downloadII() {
 		$.ajax({
 			url: base + "data/getdataII/" + url[6] + "/" + url[7],
@@ -159,7 +158,7 @@ if (url.includes('record')) {
 			success: function (response) {
 				console.log(response);
 				//define the heading for each row of the data  
-				var csv = 'ii\n';
+				var csv = 'timestamp;ii\n';
 
 				//merge the data with CSV  
 				response.forEach(function (row) {
@@ -297,29 +296,6 @@ if (url.includes('record')) {
 		colors: ['#ff2121']
 	};
 
-	$(document).ready(function () {
-		$('#check').removeAttr('hidden');
-		$.ajax({
-			url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
-			type: 'POST',
-			dataType: 'json',
-			async: true,
-			cache: false,
-			success: function (response) {
-				if (response.status == 1) {
-					$('#check').removeClass('btn-secondary');
-					$('#check').addClass('btn-success');
-				} else {
-					$('#check').removeClass('btn-success');
-					$('#check').addClass('btn-secondary');
-				}
-			},
-			error: function (thrownError) {
-				console.log(thrownError)
-			}
-		});
-	});
-
 	function checked() {
 		$.ajax({
 			url: base + "dokter/checkDataRekaman/" + url[6] + "/" + url[7],
@@ -368,6 +344,239 @@ if (url.includes('record')) {
 		});
 	}
 
+	$(function () {
+		var loopRange = 1;
+		var idButtonTemp = 1;
+		$(".setRange").on("click", function () {
+			$('.hideButtonEnable').attr('hidden', false);
+			$('.hideButton').attr('hidden', true);
+			const maxR = $(this).data("max");
+			const minR = $(this).data("min");
+			const idButton = $(this).data("id");
+			var loopRange = $(this).data("id");
+			$.ajax({
+				url: base + "dokter/checkDataRekaman/" + url[6] + "/" + url[7],
+				method: "post",
+				dataType: "json",
+				// async: true,
+				// cache: false,
+				success: function (data) {
+					$.ajax({
+						url: base + "data/getdata/" + url[6] + "/" + url[7] + "/" + loopRange,
+						type: 'POST',
+						dataType: 'json',
+						// async: true,
+						// cache: false,
+						success: function (response) {
+
+							let i_new = response.map(({
+								i
+							}) => i);
+							// console.log(i)
+							let ii_new = response.map(({
+								ii
+							}) => ii);
+							let iii_new = response.map(({
+								iii
+							}) => iii);
+							let avr_new = response.map(({
+								avr
+							}) => avr);
+							let avl_new = response.map(({
+								avl
+							}) => avl);
+							let avf_new = response.map(({
+								avf
+							}) => avf);
+							let v1_new = response.map(({
+								v1
+							}) => v1);
+							let v2_new = response.map(({
+								v2
+							}) => v2);
+							let v3_new = response.map(({
+								v3
+							}) => v3);
+							let v4_new = response.map(({
+								v4
+							}) => v4);
+							let v5_new = response.map(({
+								v5
+							}) => v5);
+							let v6_new = response.map(({
+								v6
+							}) => v6);
+							// console.log(loopRange * 800)
+							// console.log(minR);
+							// console.log(minR + ((((maxR - minR) + 1) / 4) - 1));
+							i_new = i_new.slice(0, minR + ((((maxR - minR) + 1) / 4) - 1));
+							ii_full_new = ii_new.slice(0, minR + (maxR - minR) * 2);
+							ii_new = ii_new.slice(0, minR + ((((maxR - minR) + 1) / 4) - 1));
+							iii_new = iii_new.slice(0, minR + ((((maxR - minR) + 1) / 4) - 1));
+							avr_new = avr_new.slice(0, minR + ((((maxR - minR) + 1) / 2) - 1));
+							avl_new = avl_new.slice(0, minR + ((((maxR - minR) + 1) / 2) - 1));
+							avf_new = avf_new.slice(0, minR + ((((maxR - minR) + 1) / 2) - 1));
+							v1_new = v1_new.slice(0, minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
+							v2_new = v2_new.slice(0, minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
+							v3_new = v3_new.slice(0, minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
+							v4_new = v4_new.slice(0, minR + (maxR - minR) * 2);
+							v5_new = v5_new.slice(0, minR + (maxR - minR) * 2);
+							v6_new = v6_new.slice(0, minR + (maxR - minR) * 2);
+
+							chart_i.updateOptions({
+								xaxis: {
+									min: minR,
+									max: minR + ((((maxR - minR) + 1) / 4) - 1),
+								},
+							});
+							chart_ii.updateOptions({
+								xaxis: {
+									min: minR,
+									max: minR + ((((maxR - minR) + 1) / 4) - 1),
+								},
+							});
+							chart_iii.updateOptions({
+								xaxis: {
+									min: minR,
+									max: minR + ((((maxR - minR) + 1) / 4) - 1),
+								},
+							});
+							chart_avr.updateOptions({
+								xaxis: {
+									min: minR + (((maxR - minR) + 1) / 4),
+									max: minR + ((((maxR - minR) + 1) / 2) - 1),
+								},
+							});
+							chart_avl.updateOptions({
+								xaxis: {
+									min: minR + (((maxR - minR) + 1) / 4),
+									max: minR + ((((maxR - minR) + 1) / 2) - 1),
+								},
+							});
+							chart_avf.updateOptions({
+								xaxis: {
+									min: minR + (((maxR - minR) + 1) / 4),
+									max: minR + ((((maxR - minR) + 1) / 2) - 1),
+								},
+							});
+							chart_v1.updateOptions({
+								xaxis: {
+									min: minR + (((maxR - minR) + 1) / 2),
+									max: minR + (((((maxR - minR) + 1) / 4) * 3) - 1),
+								},
+							});
+							chart_v2.updateOptions({
+								xaxis: {
+									min: minR + (((maxR - minR) + 1) / 2),
+									max: minR + (((((maxR - minR) + 1) / 4) * 3) - 1),
+								},
+							});
+							chart_v3.updateOptions({
+								xaxis: {
+									min: minR + (((maxR - minR) + 1) / 2),
+									max: minR + (((((maxR - minR) + 1) / 4) * 3) - 1),
+								},
+							});
+							chart_v4.updateOptions({
+								xaxis: {
+									min: minR + ((((maxR - minR) + 1) / 4) * 3),
+									max: maxR,
+								},
+							});
+							chart_v5.updateOptions({
+								xaxis: {
+									min: minR + ((((maxR - minR) + 1) / 4) * 3),
+									max: maxR,
+								},
+							});
+							chart_v6.updateOptions({
+								xaxis: {
+									min: minR + ((((maxR - minR) + 1) / 4) * 3),
+									max: maxR,
+								},
+							});
+							chart_ii_full.updateOptions({
+								xaxis: {
+									min: minR,
+									max: maxR,
+								}
+							});
+
+							chart_i.updateSeries([{
+								name: 'voltage',
+								data: i_new,
+							}]);
+							chart_ii.updateSeries([{
+								name: 'voltage',
+								data: ii_new,
+							}]);
+							chart_iii.updateSeries([{
+								name: 'voltage',
+								data: iii_new,
+							}]);
+							chart_avr.updateSeries([{
+								name: 'voltage',
+								data: avr_new,
+							}]);
+							chart_avl.updateSeries([{
+								name: 'voltage',
+								data: avl_new,
+							}]);
+							chart_avf.updateSeries([{
+								name: 'voltage',
+								data: avf_new,
+							}]);
+							chart_v1.updateSeries([{
+								name: 'voltage',
+								data: v1_new,
+							}]);
+							chart_v2.updateSeries([{
+								name: 'voltage',
+								data: v2_new,
+							}]);
+							chart_v3.updateSeries([{
+								name: 'voltage',
+								data: v3_new,
+							}]);
+							chart_v4.updateSeries([{
+								name: 'voltage',
+								data: v4_new,
+							}]);
+							chart_v5.updateSeries([{
+								name: 'voltage',
+								data: v5_new,
+							}]);
+							chart_v6.updateSeries([{
+								name: 'voltage',
+								data: v6_new,
+							}]);
+							chart_ii_full.updateSeries([{
+								name: 'voltage',
+								data: ii_full_new,
+							}]);
+						},
+						error: function (thrownError) {
+							console.log(thrownError)
+						}
+					});
+
+					$('#buttonRange' + idButtonTemp).removeClass('btn-primary');
+					$('#buttonRange' + idButtonTemp).addClass('btn-secondary');
+					$('#buttonRange' + idButton).removeClass('btn-secondary');
+					$('#buttonRange' + idButton).addClass('btn-primary');
+					idButtonTemp = idButton;
+					$('.hideButtonEnable').attr('hidden', true);
+					$('.hideButton').attr('hidden', false);
+				},
+				error: function (thrownError) {
+					console.log(thrownError)
+				}
+			});
+
+		});
+	});
+
+
 	var chart_i = new ApexCharts(document.querySelector("#chart_i"), options);
 	var chart_ii = new ApexCharts(document.querySelector("#chart_ii"), options);
 	var chart_iii = new ApexCharts(document.querySelector("#chart_iii"), options);
@@ -401,13 +610,11 @@ if (url.includes('record')) {
 		},
 		yaxis: {
 			show: false,
-			min: 3,
-			max: 5
 		},
 		xaxis: {
 			min: 0,
 			max: 199,
-		}
+		},
 	});
 	chart_ii.updateOptions({
 		title: {
@@ -415,13 +622,11 @@ if (url.includes('record')) {
 		},
 		yaxis: {
 			show: false,
-			min: 0,
-			max: 2
 		},
 		xaxis: {
 			min: 0,
 			max: 199,
-		}
+		},
 	});
 	chart_iii.updateOptions({
 		title: {
@@ -429,13 +634,11 @@ if (url.includes('record')) {
 		},
 		yaxis: {
 			show: false,
-			min: -1,
-			max: 1
 		},
 		xaxis: {
 			min: 0,
 			max: 199,
-		}
+		},
 	});
 	chart_avr.updateOptions({
 		title: {
@@ -443,13 +646,11 @@ if (url.includes('record')) {
 		},
 		yaxis: {
 			show: false,
-			min: -4,
-			max: -1
 		},
 		xaxis: {
 			min: 200,
 			max: 399,
-		}
+		},
 	});
 	chart_avl.updateOptions({
 		title: {
@@ -457,13 +658,11 @@ if (url.includes('record')) {
 		},
 		yaxis: {
 			show: false,
-			min: 1,
-			max: 2.5
 		},
 		xaxis: {
 			min: 200,
 			max: 399,
-		}
+		},
 	});
 	chart_avf.updateOptions({
 		title: {
@@ -471,13 +670,11 @@ if (url.includes('record')) {
 		},
 		yaxis: {
 			show: false,
-			min: -0.5,
-			max: 1.5
 		},
 		xaxis: {
 			min: 200,
 			max: 399,
-		}
+		},
 	});
 	chart_v1.updateOptions({
 		title: {
@@ -485,13 +682,11 @@ if (url.includes('record')) {
 		},
 		yaxis: {
 			show: false,
-			min: -4,
-			max: -2
 		},
 		xaxis: {
 			min: 400,
 			max: 599,
-		}
+		},
 	});
 	chart_v2.updateOptions({
 		title: {
@@ -499,13 +694,11 @@ if (url.includes('record')) {
 		},
 		yaxis: {
 			show: false,
-			min: -3.8,
-			max: -2.3
 		},
 		xaxis: {
 			min: 400,
 			max: 599,
-		}
+		},
 	});
 	chart_v3.updateOptions({
 		title: {
@@ -513,13 +706,11 @@ if (url.includes('record')) {
 		},
 		yaxis: {
 			show: false,
-			min: -4.5,
-			max: -2
 		},
 		xaxis: {
 			min: 400,
 			max: 599,
-		}
+		},
 	});
 	chart_v4.updateOptions({
 		title: {
@@ -527,13 +718,11 @@ if (url.includes('record')) {
 		},
 		yaxis: {
 			show: false,
-			min: -5.5,
-			max: -2
 		},
 		xaxis: {
 			min: 600,
 			max: 799,
-		}
+		},
 	});
 	chart_v5.updateOptions({
 		title: {
@@ -541,13 +730,11 @@ if (url.includes('record')) {
 		},
 		yaxis: {
 			show: false,
-			min: 1,
-			max: 3
 		},
 		xaxis: {
 			min: 600,
 			max: 799,
-		}
+		},
 	});
 	chart_v6.updateOptions({
 		title: {
@@ -555,13 +742,11 @@ if (url.includes('record')) {
 		},
 		yaxis: {
 			show: false,
-			min: 5.5,
-			max: 7.5
 		},
 		xaxis: {
 			min: 600,
 			max: 799,
-		}
+		},
 	});
 	chart_ii_full.updateOptions({
 		title: {
@@ -570,130 +755,149 @@ if (url.includes('record')) {
 		xaxis: {
 			min: 0,
 			max: 799,
-		},
-		yaxis: {
-			show: false,
-			min: 0,
-			max: 2,
 		}
-
 	});
 
-	var arai = []
-	$.ajax({
-		url: base + "data/getdata/" + url[6] + "/" + url[7],
-		type: 'POST',
-		dataType: 'json',
-		async: true,
-		cache: false,
-		success: function (response) {
-			let i = response.map(({
-				i
-			}) => i);
-			let ii = response.map(({
-				ii
-			}) => ii);
-			let iii = response.map(({
-				iii
-			}) => iii);
-			let avr = response.map(({
-				avr
-			}) => avr);
-			let avl = response.map(({
-				avl
-			}) => avl);
-			let avf = response.map(({
-				avf
-			}) => avf);
-			let v1 = response.map(({
-				v1
-			}) => v1);
-			let v2 = response.map(({
-				v2
-			}) => v2);
-			let v3 = response.map(({
-				v3
-			}) => v3);
-			let v4 = response.map(({
-				v4
-			}) => v4);
-			let v5 = response.map(({
-				v5
-			}) => v5);
-			let v6 = response.map(({
-				v6
-			}) => v6);
+	$(document).ready(function () {
+		var loopRange = 1;
+		$.ajax({
+			url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
+			type: 'POST',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			success: function (response) {
+				if (response.status == 1) {
+					$('#check').removeAttr('hidden');
+					$('#check').removeClass('btn-secondary');
+					$('#check').addClass('btn-success');
+				} else {
+					$('#check').removeAttr('hidden');
+					$('#check').removeClass('btn-success');
+					$('#check').addClass('btn-secondary');
+				}
+			},
+			error: function (thrownError) {
+				console.log(thrownError)
+			}
+		});
+		$.ajax({
+			url: base + "data/getdata/" + url[6] + "/" + url[7] + "/" + loopRange,
+			type: 'POST',
+			dataType: 'json',
+			async: true,
+			cache: false,
+			success: function (response) {
+				let i = response.map(({
+					i
+				}) => i);
+				let ii = response.map(({
+					ii
+				}) => ii);
+				let iii = response.map(({
+					iii
+				}) => iii);
+				let avr = response.map(({
+					avr
+				}) => avr);
+				let avl = response.map(({
+					avl
+				}) => avl);
+				let avf = response.map(({
+					avf
+				}) => avf);
+				let v1 = response.map(({
+					v1
+				}) => v1);
+				let v2 = response.map(({
+					v2
+				}) => v2);
+				let v3 = response.map(({
+					v3
+				}) => v3);
+				let v4 = response.map(({
+					v4
+				}) => v4);
+				let v5 = response.map(({
+					v5
+				}) => v5);
+				let v6 = response.map(({
+					v6
+				}) => v6);
+				i = i.slice(0, 199);
+				ii_full = ii.slice(0, 799);
+				ii = ii.slice(0, 199);
+				iii = iii.slice(0, 199);
+				avr = avr.slice(0, 399);
+				avl = avl.slice(0, 399);
+				avf = avf.slice(0, 399);
+				v1 = v1.slice(0, 599);
+				v2 = v2.slice(0, 599);
+				v3 = v3.slice(0, 599);
+				v4 = v4.slice(0, 799);
+				v5 = v5.slice(0, 799);
+				v6 = v6.slice(0, 799);
 
-			i = i.slice(0, 199);
-			ii_full = ii.slice(0, 799);
-			ii = ii.slice(0, 199);
-			iii = iii.slice(0, 199);
-			avr = avr.slice(0, 399);
-			avl = avl.slice(0, 399);
-			avf = avf.slice(0, 399);
-			v1 = v1.slice(0, 599);
-			v2 = v2.slice(0, 599);
-			v3 = v3.slice(0, 599);
-			v4 = v4.slice(0, 799);
-			v5 = v5.slice(0, 799);
-			v6 = v6.slice(0, 799);
 
-
-			chart_i.updateSeries([{
-				name: 'voltage',
-				data: i,
-			}]);
-			chart_ii.updateSeries([{
-				name: 'voltage',
-				data: ii
-			}]);
-			chart_iii.updateSeries([{
-				name: 'voltage',
-				data: iii
-			}]);
-			chart_avr.updateSeries([{
-				name: 'voltage',
-				data: avr
-			}]);
-			chart_avl.updateSeries([{
-				name: 'voltage',
-				data: avl
-			}]);
-			chart_avf.updateSeries([{
-				name: 'voltage',
-				data: avf
-			}]);
-			chart_v1.updateSeries([{
-				name: 'voltage',
-				data: v1
-			}]);
-			chart_v2.updateSeries([{
-				name: 'voltage',
-				data: v2
-			}]);
-			chart_v3.updateSeries([{
-				name: 'voltage',
-				data: v3
-			}]);
-			chart_v4.updateSeries([{
-				name: 'voltage',
-				data: v4
-			}]);
-			chart_v5.updateSeries([{
-				name: 'voltage',
-				data: v5
-			}]);
-			chart_v6.updateSeries([{
-				name: 'voltage',
-				data: v6
-			}]);
-			chart_ii_full.updateSeries([{
-				name: 'voltage',
-				data: ii_full
-			}]);
-		},
-		error: function (thrownError) {
-			console.log(thrownError)
-		}
+				chart_i.updateSeries([{
+					name: 'voltage',
+					data: i,
+				}]);
+				chart_ii.updateSeries([{
+					name: 'voltage',
+					data: ii
+				}]);
+				chart_iii.updateSeries([{
+					name: 'voltage',
+					data: iii
+				}]);
+				chart_avr.updateSeries([{
+					name: 'voltage',
+					data: avr
+				}]);
+				chart_avl.updateSeries([{
+					name: 'voltage',
+					data: avl
+				}]);
+				chart_avf.updateSeries([{
+					name: 'voltage',
+					data: avf
+				}]);
+				chart_v1.updateSeries([{
+					name: 'voltage',
+					data: v1
+				}]);
+				chart_v2.updateSeries([{
+					name: 'voltage',
+					data: v2
+				}]);
+				chart_v3.updateSeries([{
+					name: 'voltage',
+					data: v3
+				}]);
+				chart_v4.updateSeries([{
+					name: 'voltage',
+					data: v4
+				}]);
+				chart_v5.updateSeries([{
+					name: 'voltage',
+					data: v5
+				}]);
+				chart_v6.updateSeries([{
+					name: 'voltage',
+					data: v6
+				}]);
+				chart_ii_full.updateSeries([{
+					name: 'voltage',
+					data: ii_full
+				}]);
+				$('.hideButtonEnable').attr('hidden', true);
+				$('.hideButton').attr('hidden', false);
+				$('#buttonRange1').addClass('btn-primary')
+			},
+			error: function (thrownError) {
+				console.log(thrownError)
+			}
+		});
 	});
 }

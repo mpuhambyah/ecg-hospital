@@ -3,6 +3,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Data extends CI_Controller
 {
+    public function apiGetData($id_pasien, $api_key)
+    {
+        $dataJson = json_decode(file_get_contents('php://input'), TRUE);
+        $alat = $this->db->get_where('alat', ['key_api' => $api_key])->row_array();
+        $dataRecord = [
+            "id_pasien" => $id_pasien,
+            "tanggal" => now()
+        ];
+        $this->db->insert('rekaman', $dataRecord);
+        $this->db->select('id');
+        $this->db->from('rekaman');
+        $this->db->order_by('id', "desc");
+        $rekaman = $this->db->get()->row_array();
+        foreach ($dataJson as $value) {
+            $value = array('id_pasien' => $id_pasien, 'id_rekaman' => $rekaman['id']) + $value;
+            $this->db->insert('ecg', $value);
+        }
+        echo "Success";
+    }
+
     public function alatGetDataPasien($id)
     {
         $alat = $this->db->get_where('alat', ['key_api' => $id])->row_array();
@@ -11,10 +31,17 @@ class Data extends CI_Controller
         echo json_encode($data);
     }
 
-    public function getdata($id_pasien, $id)
+    public function getdata($id_pasien, $id, $loopRange)
     {
         $this->load->model('M_data');
-        $data = $this->M_data->dataEcg($id_pasien, $id);
+        $data = $this->M_data->dataEcg($id_pasien, $id, $loopRange);
+        echo json_encode($data);
+    }
+
+    public function getdataFull($id_pasien, $id)
+    {
+        $this->load->model('M_data');
+        $data = $this->M_data->dataEcgFull($id_pasien, $id);
         echo json_encode($data);
     }
 
