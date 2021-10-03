@@ -355,7 +355,7 @@ if (url.includes('record')) {
 			const idButton = $(this).data("id");
 			var loopRange = $(this).data("id");
 			$.ajax({
-				url: base + "dokter/checkDataRekaman/" + url[6] + "/" + url[7],
+				url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
 				method: "post",
 				dataType: "json",
 				// async: true,

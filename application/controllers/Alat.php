@@ -110,6 +110,11 @@ class Alat extends CI_Controller
         $data['id_rekaman'] = $this->uri->segment(4);
         $data['rekamanPasien'] = $this->M_dokter->rekamanPasien($data['id'], $data['id_rekaman']);
         $data['listRekaman'] = $this->M_dokter->listRekaman($data['id']);
+
+        $this->load->model('M_data');
+        $data['totalData'] = count($this->M_data->dataEcgFull($data['id'], $data['id_rekaman']));
+        $data['loopData'] = intval(ceil($data['totalData'] / 800));
+
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/navbar', $data);
