@@ -35,7 +35,7 @@ class App():
 
     def add_option(self):
         nama = []
-        df = pd.read_json('http://localhost/ecg-hospital/data/alatGetDataPasien/c4ca4238a0b923820dcc509a6f75849b')
+        df = pd.read_json('http://alive.b401telematics.com/data/alatGetDataPasien/c4ca4238a0b923820dcc509a6f75849b')
         df.to_csv (r'pasien.txt', index = False)
         with open ('pasien.txt', 'r') as f:
             reader = csv.reader(f)
