@@ -89,6 +89,8 @@ class Data extends CI_Controller
     {
         $this->load->model('M_dokter');
         $data = $this->M_dokter->rekamanPasien($id_pasien, $id);
+        var_dump($data);
+        die;
         echo json_encode($data);
     }
 }
