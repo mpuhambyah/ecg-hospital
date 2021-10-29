@@ -15,7 +15,7 @@ class App():
         with open ('pasien.txt', 'r') as f:
             reader = csv.reader(f)
             for row in reader:
-                nama.append(row[3])
+                nama.append(row[0]  + ". " + row[3])
             if(len(nama) > 0):
                 nama.pop(0)
         self.options = nama
@@ -35,12 +35,12 @@ class App():
 
     def add_option(self):
         nama = []
-        df = pd.read_json('http://alive.b401telematics.com/data/alatGetDataPasien/c4ca4238a0b923820dcc509a6f75849b')
+        df = pd.read_json('http://alive.b401telematics.com/Data/alatGetDataPasien/c4ca4238a0b923820dcc509a6f75849b')
         df.to_csv (r'pasien.txt', index = False)
         with open ('pasien.txt', 'r') as f:
             reader = csv.reader(f)
             for row in reader:
-                nama.append(row[3])
+                nama.append(row[0]  + ". " + row[3])
             if(len(nama) > 0):
                 nama.pop(0)
         self.options.clear()
@@ -55,8 +55,10 @@ class App():
         print(self.options)
 
     def option_select(self, *args):
-        print(self.om_variable.get())
-
+        result = self.om_variable.get()
+        result = result.replace(' ', '')
+        result = result.split('.')
+        print(result[0])
 
 root = tk.Tk()
 App(root)

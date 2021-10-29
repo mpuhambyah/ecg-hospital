@@ -5,16 +5,16 @@
         </div>
         <?php foreach ($listFile as $l) : ?>
             <div class="card card-hero">
-                <div class="card-header">
-                    <div class="card-icon">
+                <a class="card-header" href="<?= base_url() ?>dokter/recordRpeak/<?= $l['id_pasien'] ?>/<?= $l['id_rekaman'] ?>/<?= $l['id'] ?>" style="color:white;text-decoration:none;">
+                    <div class=" card-icon">
                         <i class="fas fa-heartbeat"></i>
                     </div>
                     <h4><?= $l['nama_pasien'] ?></h4>
                     <div class="card-description">Rekaman <?= $l['id_rekaman'] ?></div>
-                </div>
+                </a>
                 <div class="card-body p-0">
                     <div class="tickets-list">
-                        <a href="#" class="ticket-item">
+                        <a href="<?= base_url() ?>dokter/record/" class="ticket-item">
                             <div class="ticket-title">
                                 <h4><?= $l['keterangan'] ?></h4>
                             </div>

@@ -1,10 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+ini_set('max_execution_time', 0);
+set_time_limit(1800);
+ini_set('memory_limit', '-1');
 
 class Data extends CI_Controller
 {
     public function apiGetData($id_pasien, $api_key)
     {
+        $count = 0;
         $dataJson = json_decode(file_get_contents('php://input'), TRUE);
         $alat = $this->db->get_where('alat', ['key_api' => $api_key])->row_array();
         $dataRecord = [
@@ -19,6 +23,8 @@ class Data extends CI_Controller
         foreach ($dataJson as $value) {
             $value = array('id_pasien' => $id_pasien, 'id_rekaman' => $rekaman['id']) + $value;
             $this->db->insert('ecg', $value);
+            $count++;
+            echo $count . "\n";
         }
         echo "Success";
     }
@@ -63,6 +69,13 @@ class Data extends CI_Controller
     {
         $this->load->model('M_data');
         $data = $this->M_data->getDataFilePasien($id);
+        echo json_encode($data);
+    }
+
+    public function getRpeak($id)
+    {
+        $this->load->model('M_data');
+        $data = $this->M_data->dataRpeak($id);
         echo json_encode($data);
     }
 

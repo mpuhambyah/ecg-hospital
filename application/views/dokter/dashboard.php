@@ -46,7 +46,7 @@
                         <?php if ($total > 0) { ?>
                             <?php foreach ($listPasienUnchecked as $l) : ?>
                                 <div class="tickets-list">
-                                    <a href="<?= base_url() ?>dokter/record/<?= $l['id'] . "/" . $l['id_rekaman'] ?>" class="ticket-item">
+                                    <a href="<?= base_url() ?>dokter/listMinute/<?= $l['id'] . "/" . $l['id_rekaman'] ?>" class="ticket-item">
                                         <div class="ticket-title">
                                             <h4>Rekaman <?= $l['id_rekaman'] ?></h4>
                                         </div>

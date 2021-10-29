@@ -5,6 +5,7 @@ class Dokter extends CI_Controller
 {
     public function __construct()
     {
+        ini_set('memory_limit', '-1');
         parent::__construct();
         $data = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         if (!$this->session->userdata('email')) {
@@ -78,6 +79,28 @@ class Dokter extends CI_Controller
         $this->load->model('M_dokter');
         $data['id'] = $this->uri->segment(3);
         $data['id_rekaman'] = $this->uri->segment(4);
+        $data['minute'] = $this->uri->segment(5);
+        $data['rekamanPasien'] = $this->M_dokter->rekamanPasien($data['id'], $data['id_rekaman']);
+        $data['listRekaman'] = $this->M_dokter->listRekaman($data['id']);
+        $this->load->model('M_data');
+        $data['totalData'] = count($this->M_data->dataEcgFull($data['id'], $data['id_rekaman']));
+        $data['loopData'] = intval(ceil($data['totalData'] / 800));
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('template/navbar', $data);
+        $this->load->view('dokter/record', $data);
+        $this->load->view('template/footer', $data);
+    }
+
+
+    public function recordRpeak()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $data['profile'] = $this->db->get('profile')->row_array();
+        $data['title'] = "List File";
+        $this->load->model('M_dokter');
+        $data['id'] = $this->uri->segment(3);
+        $data['id_rekaman'] = $this->uri->segment(4);
         $data['rekamanPasien'] = $this->M_dokter->rekamanPasien($data['id'], $data['id_rekaman']);
         $data['listRekaman'] = $this->M_dokter->listRekaman($data['id']);
 
@@ -87,7 +110,7 @@ class Dokter extends CI_Controller
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/navbar', $data);
-        $this->load->view('dokter/record', $data);
+        $this->load->view('dokter/recordRpeak', $data);
         $this->load->view('template/footer', $data);
     }
 
@@ -163,6 +186,26 @@ class Dokter extends CI_Controller
         $this->load->view('template/footer', $data);
     }
 
+    public function listMinute()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+        $data['profile'] = $this->db->get('profile')->row_array();
+        $data['title'] = "List Pasien";
+        $this->load->model('M_dokter');
+        $id = $this->uri->segment(3);
+        $id_rekaman = $this->uri->segment(4);
+        $data['pasien'] = $this->db->get_where('pasien', ['id' => $id])->row_array();
+        $data['id'] =  $id;
+        $data['id_rekaman'] = $id_rekaman;
+        $data['JumlahlistMinute'] = $this->M_dokter->JumlahlistMinute($id, $id_rekaman);
+        $data['listRekaman'] = round(intval($data['JumlahlistMinute']['jumlah']) / 12000);
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar', $data);
+        $this->load->view('template/navbar', $data);
+        $this->load->view('dokter/listMinute', $data);
+        $this->load->view('template/footer', $data);
+    }
+
     public function activities()
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
@@ -204,6 +247,8 @@ class Dokter extends CI_Controller
     {
         $file = $_FILES['fileuser']['name'];
 
+        $file = str_replace(' ', '_', $file);
+
         $config['upload_path'] = './assets/file/';
         $config['allowed_types'] = 'csv';
 
@@ -233,7 +278,8 @@ class Dokter extends CI_Controller
                 }
                 $rPuncakData = [
                     "annotation" => $csv[0],
-                    "ecg" => $csv[1],
+                    "timestamp" => $csv[1],
+                    "ecg" => $csv[2],
                     "id_upload" => $id_upload['id']
                 ];
                 $this->db->insert('rpeak', $rPuncakData);

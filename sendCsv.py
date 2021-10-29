@@ -25,15 +25,14 @@ def make_json(csvFilePath, jsonFilePath):
     result = json.dumps(data, indent=4)
     return result
         
-         
- 
-csvFilePath = r'samples.csv'
+csvFilePath = r'C:\Users\mpuha\Downloads\coba_1.csv'
 jsonFilePath = r'test.json'
  
 result = make_json(csvFilePath, jsonFilePath)
 
 # url = 'http://localhost/ecg-hospital/Data/apiGetData/5/c4ca4238a0b923820dcc509a6f75849b'
-url = 'http://alive.b401telematics.com/Data/apiGetData/3/c4ca4238a0b923820dcc509a6f75849b'
+url = 'http://localhost/ecg-hospital/Data/apiGetData/3/c4ca4238a0b923820dcc509a6f75849b'
+# url = 'http://alive.b401telematics.com/Data/apiGetData/3/c4ca4238a0b923820dcc509a6f75849b'
 
 headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 r = requests.post(url, data=result, headers=headers, verify=False)

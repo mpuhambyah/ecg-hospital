@@ -18,6 +18,14 @@ class M_data extends CI_Model
     return $this->db->query($query)->result_array();
   }
 
+
+  public function dataRpeak($id)
+  {
+    $query = "SELECT * FROM rpeak WHERE id_upload = $id ORDER BY id ASC";
+
+    return $this->db->query($query)->result_array();
+  }
+
   public function dataEcgII($id_pasien, $id)
   {
     $query = "SELECT ecg.timestamp, ecg.ii FROM ecg WHERE id_pasien = $id_pasien AND id_rekaman = $id ORDER BY id DESC";
@@ -27,9 +35,9 @@ class M_data extends CI_Model
 
   public function dataFile($id)
   {
-    $query = "SELECT rpeak.annotation, rpeak.ecg
+    $query = "SELECT rpeak.annotation, rpeak.timestamp, rpeak.ecg
     FROM rpeak WHERE rpeak.id_upload = $id
-    ORDER BY rpeak.id DESC";
+    ORDER BY rpeak.id ASC";
 
     return $this->db->query($query)->result_array();
   }
