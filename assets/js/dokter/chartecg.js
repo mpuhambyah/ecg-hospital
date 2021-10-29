@@ -767,6 +767,7 @@ if (url.includes('record')) {
 			async: true,
 			cache: false,
 			success: function (response) {
+				console.log(response);
 				if (response.status == 1) {
 					$('#check').removeAttr('hidden');
 					$('#check').removeClass('btn-secondary');
