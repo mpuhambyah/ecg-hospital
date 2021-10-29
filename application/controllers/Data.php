@@ -88,6 +88,9 @@ class Data extends CI_Controller
     public function getDataRekaman($id_pasien, $id)
     {
         $this->load->model('M_dokter');
+        var_dump($id_pasien);
+        var_dump($id);
+        die;
         $data = $this->M_dokter->rekamanPasien($id_pasien, $id);
         echo json_encode($data);
     }
