@@ -26,7 +26,9 @@ class M_dokter extends CI_Model
 
   public function listRekaman($id)
   {
-    $query = "SELECT pasien.id as 'id', pasien.nama as 'nama', alat.nama as 'nama_alat', rekaman.status_check as 'status', rekaman.tanggal as 'tanggal', rekaman.id as 'id_rekaman' FROM pasien INNER JOIN alat ON pasien.id_alat = alat.id INNER JOIN rekaman ON pasien.id = rekaman.id_pasien WHERE pasien.id = $id";
+    $query = "SELECT pasien.id as 'id', pasien.nama as 'nama', alat.nama as 'nama_alat', rekaman.status_check as 'status', rekaman.tanggal as 'tanggal', rekaman.id as 'id_rekaman' FROM pasien 
+    INNER JOIN alat ON pasien.id_alat = alat.id 
+    INNER JOIN rekaman ON pasien.id = rekaman.id_pasien WHERE pasien.id = $id";
 
     return $this->db->query($query)->result_array();
   }

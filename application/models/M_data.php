@@ -12,8 +12,9 @@ class M_data extends CI_Model
 
   public function dataEcg($id_pasien, $id, $loopRange)
   {
-    $limit = 800 * $loopRange;
-    $query = "SELECT ecg.timestamp, ecg.i, ecg.ii, ecg.iii, ecg.avr, ecg.avl, ecg.avf, ecg.v1, ecg.v2, ecg.v3, ecg.v4, ecg.v5, ecg.v6 FROM ecg WHERE id_pasien = $id_pasien AND id_rekaman = $id ORDER BY id DESC LIMIT $limit";
+    $limit = 800;
+    $limit2 = 800 * ($loopRange - 1);
+    $query = "SELECT ecg.timestamp, ecg.i, ecg.ii, ecg.iii, ecg.avr, ecg.avl, ecg.avf, ecg.v1, ecg.v2, ecg.v3, ecg.v4, ecg.v5, ecg.v6 FROM ecg WHERE id_pasien = $id_pasien AND id_rekaman = $id ORDER BY id DESC LIMIT $limit2, $limit";
 
     return $this->db->query($query)->result_array();
   }
