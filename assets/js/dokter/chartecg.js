@@ -298,7 +298,7 @@ if (url.includes('record')) {
 
 	function checked() {
 		$.ajax({
-			url: base + "dokter/checkDataRekaman/" + url[6] + "/" + url[6],
+			url: base + "dokter/checkDataRekaman/" + url[6] + "/" + url[7],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -308,7 +308,7 @@ if (url.includes('record')) {
 					$('#check').removeClass('btn-secondary');
 					$('#check').addClass('btn-success');
 					$.ajax({
-						url: base + "dokter/getActivities/" + url[6] + "/" + url[6] + "/3",
+						url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/3",
 						type: 'POST',
 						dataType: 'json',
 						async: true,
@@ -324,7 +324,7 @@ if (url.includes('record')) {
 					$('#check').removeClass('btn-success');
 					$('#check').addClass('btn-secondary');
 					$.ajax({
-						url: base + "dokter/getActivities/" + url[6] + "/" + url[6] + "/5",
+						url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/5",
 						type: 'POST',
 						dataType: 'json',
 						async: true,
@@ -356,14 +356,14 @@ if (url.includes('record')) {
 			var loopRange = $(this).data("id");
 			console.log(url[6]);
 			$.ajax({
-				url: base + "data/getDataRekaman/" + url[6] + "/" + url[6],
+				url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
 				method: "post",
 				dataType: "json",
 				// async: true,
 				// cache: false,
 				success: function (data) {
 					$.ajax({
-						url: base + "data/getdata/" + url[6] + "/" + url[6] + "/" + loopRange,
+						url: base + "data/getdata/" + url[6] + "/" + url[7] + "/" + loopRange,
 						type: 'POST',
 						dataType: 'json',
 						// async: true,
