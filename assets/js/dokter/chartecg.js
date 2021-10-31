@@ -354,6 +354,7 @@ if (url.includes('record')) {
 			const minR = $(this).data("min");
 			const idButton = $(this).data("id");
 			var loopRange = $(this).data("id");
+			console.log(url[6]);
 			$.ajax({
 				url: base + "data/getDataRekaman/" + url[6] + "/" + url[6],
 				method: "post",
