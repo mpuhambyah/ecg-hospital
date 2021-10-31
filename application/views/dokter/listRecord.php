@@ -15,13 +15,16 @@
                             <table class="table table-striped">
                                 <tr>
                                     <th>Rekaman</th>
+                                    <th>Durasi</th>
                                     <th>Status</th>
                                     <th>Tanggal Rekaman</th>
                                     <th>Action</th>
                                 </tr>
-                                <?php foreach ($listRekaman as $l) : ?>
+                                <?php $i = 0;
+                                foreach ($listRekaman as $l) : ?>
                                     <tr>
                                         <td class="font-weight-600">Rekaman <?= $l['id_rekaman'] ?></td>
+                                        <td class="font-weight-600"><?= $duration[$i] ?> Menit</td>
                                         <td>
                                             <?php if ($l['status'] == 0) { ?>
                                                 <div class="badge badge-warning">Uncheked</div>
@@ -35,7 +38,8 @@
                                             <a data-toggle="modal" data-target="#deleteModal" class="deleteRecord btn btn-danger" data-id=<?= $l['id'] ?> data-id_rekaman=<?= $l['id_rekaman'] ?> style="color:white">Delete</a>
                                         </td>
                                     </tr>
-                                <?php endforeach ?>
+                                <?php $i++;
+                                endforeach ?>
                             </table>
                         </div>
                     </div>
