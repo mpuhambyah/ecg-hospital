@@ -51,7 +51,7 @@ $(".downloadFileCSV").click(function () {
 if (url.includes('record')) {
 	document.getElementById("btn_convert").addEventListener("click", function () {
 		$.ajax({
-			url: base + "data/getdataPasien/" + url[5] + "/" + url[6],
+			url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -70,7 +70,7 @@ if (url.includes('record')) {
 					anchorTag.click();
 				});
 				$.ajax({
-					url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/5",
+					url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/5",
 					type: 'POST',
 					dataType: 'json',
 					async: true,
@@ -91,7 +91,7 @@ if (url.includes('record')) {
 
 	function download() {
 		$.ajax({
-			url: base + "data/getdataFull/" + url[5] + "/" + url[6],
+			url: base + "data/getdataFull/" + url[6] + "/" + url[7],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -113,7 +113,7 @@ if (url.includes('record')) {
 
 				//provide the name for the CSV file to be downloaded 
 				$.ajax({
-					url: base + "data/getdataPasien/" + url[5] + "/" + url[6],
+					url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
 					type: 'POST',
 					dataType: 'json',
 					async: true,
@@ -122,7 +122,7 @@ if (url.includes('record')) {
 						hiddenElement.download = response.nama + "_recordAll_rekaman" + url[6] + '.csv';
 						hiddenElement.click();
 						$.ajax({
-							url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/1",
+							url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/1",
 							type: 'POST',
 							dataType: 'json',
 							async: true,
@@ -148,13 +148,12 @@ if (url.includes('record')) {
 
 	function downloadII() {
 		$.ajax({
-			url: base + "data/getdataII/" + url[5] + "/" + url[6],
+			url: base + "data/getdataII/" + url[6] + "/" + url[7],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
 			cache: false,
 			success: function (response) {
-				console.log(response);
 				//define the heading for each row of the data  
 				var csv = 'timestamp;ii\n';
 
@@ -171,7 +170,7 @@ if (url.includes('record')) {
 
 				//provide the name for the CSV file to be downloaded 
 				$.ajax({
-					url: base + "data/getdataPasien/" + url[5] + "/" + url[6],
+					url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
 					type: 'POST',
 					dataType: 'json',
 					async: true,
@@ -180,7 +179,7 @@ if (url.includes('record')) {
 						hiddenElement.download = response.nama + "_recordII_rekaman" + url[6] + '.csv';
 						hiddenElement.click();
 						$.ajax({
-							url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/1",
+							url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/1",
 							type: 'POST',
 							dataType: 'json',
 							async: true,
@@ -296,7 +295,7 @@ if (url.includes('record')) {
 
 	function checked() {
 		$.ajax({
-			url: base + "dokter/checkDataRekaman/" + url[5] + "/" + url[6],
+			url: base + "dokter/checkDataRekaman/" + url[6] + "/" + url[7],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -306,7 +305,7 @@ if (url.includes('record')) {
 					$('#check').removeClass('btn-secondary');
 					$('#check').addClass('btn-success');
 					$.ajax({
-						url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/3",
+						url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/3",
 						type: 'POST',
 						dataType: 'json',
 						async: true,
@@ -322,7 +321,7 @@ if (url.includes('record')) {
 					$('#check').removeClass('btn-success');
 					$('#check').addClass('btn-secondary');
 					$.ajax({
-						url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/5",
+						url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/5",
 						type: 'POST',
 						dataType: 'json',
 						async: true,
@@ -342,6 +341,26 @@ if (url.includes('record')) {
 		});
 	}
 
+	function sliceNew(values, start) {
+		var result = [];
+		var count = 0;
+		for (var i = start; i < start + 200; i++) {
+			result.push([i, values[count]]);
+			count++;
+		}
+		return result;
+	}
+
+	function sliceNewFull(values, start) {
+		var result = [];
+		var count = 0;
+		for (var i = start; i < start + 800; i++) {
+			result.push([i, values[count]]);
+			count++;
+		}
+		return result;
+	}
+
 	$(function () {
 		var loopRange = 1;
 		var idButtonTemp = 1;
@@ -353,14 +372,14 @@ if (url.includes('record')) {
 			const idButton = $(this).data("id");
 			var loopRange = $(this).data("id");
 			$.ajax({
-				url: base + "data/getDataRekaman/" + url[5] + "/" + url[6],
+				url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
 				method: "post",
 				dataType: "json",
 				// async: true,
 				// cache: false,
 				success: function (data) {
 					$.ajax({
-						url: base + "data/getdata/" + url[5] + "/" + url[6] + "/" + loopRange,
+						url: base + "data/getdata/" + url[6] + "/" + url[7] + "/" + loopRange,
 						type: 'POST',
 						dataType: 'json',
 						// async: true,
@@ -407,19 +426,44 @@ if (url.includes('record')) {
 							// console.log(loopRange * 800)
 							console.log(minR);
 							// console.log(minR + ((((maxR - minR) + 1) / 4) - 1));
-							i_new = i_new.slice(0, minR + ((((maxR - minR) + 1) / 4) - 1));
-							ii_full_new = ii_new.slice(0, minR + (maxR - minR) * 2);
-							ii_new = ii_new.slice(0, minR + ((((maxR - minR) + 1) / 4) - 1));
-							iii_new = iii_new.slice(0, minR + ((((maxR - minR) + 1) / 4) - 1));
-							avr_new = avr_new.slice(0, minR + ((((maxR - minR) + 1) / 2) - 1));
-							avl_new = avl_new.slice(0, minR + ((((maxR - minR) + 1) / 2) - 1));
-							avf_new = avf_new.slice(0, minR + ((((maxR - minR) + 1) / 2) - 1));
-							v1_new = v1_new.slice(0, minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
-							v2_new = v2_new.slice(0, minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
-							v3_new = v3_new.slice(0, minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
-							v4_new = v4_new.slice(0, minR + (maxR - minR) * 2);
-							v5_new = v5_new.slice(0, minR + (maxR - minR) * 2);
-							v6_new = v6_new.slice(0, minR + (maxR - minR) * 2);
+							i_new = i_new.slice(minR, minR + ((((maxR - minR) + 1) / 4)));
+							ii_full_new = ii_new.slice(minR, minR + (maxR - minR) * 2);
+							ii_new = ii_new.slice(minR, minR + ((((maxR - minR) + 1) / 4)));
+							iii_new = iii_new.slice(minR, minR + ((((maxR - minR) + 1) / 4)));
+							avr_new = avr_new.slice(minR + ((((maxR - minR) + 1) / 4) - 1), minR + (((maxR - minR) + 1) / 2) - 1);
+							avl_new = avl_new.slice(minR + ((((maxR - minR) + 1) / 4) - 1), minR + (((maxR - minR) + 1) / 2) - 1);
+							avf_new = avf_new.slice(minR + ((((maxR - minR) + 1) / 4) - 1), minR + (((maxR - minR) + 1) / 2) - 1);
+							v1_new = v1_new.slice(minR + ((((maxR - minR) + 1) / 2) - 1), minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
+							v2_new = v2_new.slice(minR + ((((maxR - minR) + 1) / 2) - 1), minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
+							v3_new = v3_new.slice(minR + ((((maxR - minR) + 1) / 2) - 1), minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
+							v4_new = v4_new.slice(minR + (((((maxR - minR) + 1) / 4) * 3)), minR + (maxR - minR) * 2);
+							v5_new = v5_new.slice(minR + (((((maxR - minR) + 1) / 4) * 3)), minR + (maxR - minR) * 2);
+							v6_new = v6_new.slice(minR + (((((maxR - minR) + 1) / 4) * 3)), minR + (maxR - minR) * 2);
+
+							console.log(i_new);
+							console.log(avr_new);
+							console.log(v1_new);
+							console.log(v4_new);
+
+							i_new = sliceNew(i_new, minR);
+							ii_full_new = sliceNewFull(ii_full_new, minR);
+							ii_new = sliceNew(ii_new, minR);
+							iii_new = sliceNew(iii_new, minR);
+							avr_new = sliceNew(avr_new, minR + (((maxR - minR) + 1) / 4));
+							avl_new = sliceNew(avl_new, minR + (((maxR - minR) + 1) / 4));
+							avf_new = sliceNew(avf_new, minR + (((maxR - minR) + 1) / 4));
+							v1_new = sliceNew(v1_new, minR + (((maxR - minR) + 1) / 2));
+							v2_new = sliceNew(v2_new, minR + (((maxR - minR) + 1) / 2));
+							v3_new = sliceNew(v3_new, minR + (((maxR - minR) + 1) / 2));
+							v4_new = sliceNew(v4_new, minR + (((((maxR - minR) + 1) / 4) * 3)));
+							v5_new = sliceNew(v5_new, minR + (((((maxR - minR) + 1) / 4) * 3)));
+							v6_new = sliceNew(v6_new, minR + (((((maxR - minR) + 1) / 4) * 3)));
+
+							console.log(i_new);
+							console.log(avr_new);
+							console.log(v1_new);
+							console.log(v4_new);
+
 
 							chart_i.updateOptions({
 								xaxis: {
@@ -758,9 +802,8 @@ if (url.includes('record')) {
 
 	$(document).ready(function () {
 		var loopRange = 1;
-		console.log(base + "data/getDataRekaman/" + url[5] + "/" + url[6]);
 		$.ajax({
-			url: base + "data/getDataRekaman/" + url[5] + "/" + url[6],
+			url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -780,132 +823,132 @@ if (url.includes('record')) {
 				console.log(thrownError)
 			}
 		});
-		$.ajax({
-			url: base + "data/getdata/" + url[5] + "/" + url[6] + "/" + loopRange,
-			type: 'POST',
-			dataType: 'json',
-			async: true,
-			cache: false,
-			success: function (response) {
-				console.log(response);
-				let i = response.map(({
-					i
-				}) => i);
-				let ii = response.map(({
-					ii
-				}) => ii);
-				let iii = response.map(({
-					iii
-				}) => iii);
-				let avr = response.map(({
-					avr
-				}) => avr);
-				let avl = response.map(({
-					avl
-				}) => avl);
-				let avf = response.map(({
-					avf
-				}) => avf);
-				let v1 = response.map(({
-					v1
-				}) => v1);
-				let v2 = response.map(({
-					v2
-				}) => v2);
-				let v3 = response.map(({
-					v3
-				}) => v3);
-				let v4 = response.map(({
-					v4
-				}) => v4);
-				let v5 = response.map(({
-					v5
-				}) => v5);
-				let v6 = response.map(({
-					v6
-				}) => v6);
-				i = i.slice(0, 199);
-				ii_full = ii.slice(0, 799);
-				ii = ii.slice(0, 199);
-				iii = iii.slice(0, 199);
-				avr = avr.slice(0, 399);
-				avl = avl.slice(0, 399);
-				avf = avf.slice(0, 399);
-				v1 = v1.slice(0, 599);
-				v2 = v2.slice(0, 599);
-				v3 = v3.slice(0, 599);
-				v4 = v4.slice(0, 799);
-				v5 = v5.slice(0, 799);
-				v6 = v6.slice(0, 799);
+		// $.ajax({
+		// 	url: base + "data/getdata/" + url[6] + "/" + url[7] + "/" + loopRange,
+		// 	type: 'POST',
+		// 	dataType: 'json',
+		// 	async: true,
+		// 	cache: false,
+		// 	success: function (response) {
+		// 		let i = response.map(({
+		// 			i
+		// 		}) => i);
+		// 		let ii = response.map(({
+		// 			ii
+		// 		}) => ii);
+		// 		let iii = response.map(({
+		// 			iii
+		// 		}) => iii);
+		// 		let avr = response.map(({
+		// 			avr
+		// 		}) => avr);
+		// 		let avl = response.map(({
+		// 			avl
+		// 		}) => avl);
+		// 		let avf = response.map(({
+		// 			avf
+		// 		}) => avf);
+		// 		let v1 = response.map(({
+		// 			v1
+		// 		}) => v1);
+		// 		let v2 = response.map(({
+		// 			v2
+		// 		}) => v2);
+		// 		let v3 = response.map(({
+		// 			v3
+		// 		}) => v3);
+		// 		let v4 = response.map(({
+		// 			v4
+		// 		}) => v4);
+		// 		let v5 = response.map(({
+		// 			v5
+		// 		}) => v5);
+		// 		let v6 = response.map(({
+		// 			v6
+		// 		}) => v6);
+		// 		i = i.slice(0, 199);
+		// 		ii_full = ii.slice(0, 799);
+		// 		ii = ii.slice(0, 199);
+		// 		iii = iii.slice(0, 199);
+		// 		avr = avr.slice(0, 399);
+		// 		avl = avl.slice(0, 399);
+		// 		avf = avf.slice(0, 399);
+		// 		v1 = v1.slice(0, 599);
+		// 		v2 = v2.slice(0, 599);
+		// 		v3 = v3.slice(0, 599);
+		// 		v4 = v4.slice(0, 799);
+		// 		v5 = v5.slice(0, 799);
+		// 		v6 = v6.slice(0, 799);
 
 
-				chart_i.updateSeries([{
-					name: 'voltage',
-					data: i,
-				}]);
-				chart_ii.updateSeries([{
-					name: 'voltage',
-					data: ii
-				}]);
-				chart_iii.updateSeries([{
-					name: 'voltage',
-					data: iii
-				}]);
-				chart_avr.updateSeries([{
-					name: 'voltage',
-					data: avr
-				}]);
-				chart_avl.updateSeries([{
-					name: 'voltage',
-					data: avl
-				}]);
-				chart_avf.updateSeries([{
-					name: 'voltage',
-					data: avf
-				}]);
-				chart_v1.updateSeries([{
-					name: 'voltage',
-					data: v1
-				}]);
-				chart_v2.updateSeries([{
-					name: 'voltage',
-					data: v2
-				}]);
-				chart_v3.updateSeries([{
-					name: 'voltage',
-					data: v3
-				}]);
-				chart_v4.updateSeries([{
-					name: 'voltage',
-					data: v4
-				}]);
-				chart_v5.updateSeries([{
-					name: 'voltage',
-					data: v5
-				}]);
-				chart_v6.updateSeries([{
-					name: 'voltage',
-					data: v6
-				}]);
-				chart_ii_full.updateSeries([{
-					name: 'voltage',
-					data: ii_full
-				}]);
-				$('.hideButtonEnable').attr('hidden', true);
-				$('.hideButton').attr('hidden', false);
-				$('#buttonRange1').addClass('btn-primary')
-			},
-			error: function (thrownError) {
-				console.log(thrownError)
-			}
-		});
+		// 		chart_i.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: i,
+		// 		}]);
+		// 		chart_ii.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: ii
+		// 		}]);
+		// 		chart_iii.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: iii
+		// 		}]);
+		// 		chart_avr.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: avr
+		// 		}]);
+		// 		chart_avl.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: avl
+		// 		}]);
+		// 		chart_avf.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: avf
+		// 		}]);
+		// 		chart_v1.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: v1
+		// 		}]);
+		// 		chart_v2.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: v2
+		// 		}]);
+		// 		chart_v3.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: v3
+		// 		}]);
+		// 		chart_v4.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: v4
+		// 		}]);
+		// 		chart_v5.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: v5
+		// 		}]);
+		// 		chart_v6.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: v6
+		// 		}]);
+		// 		chart_ii_full.updateSeries([{
+		// 			name: 'voltage',
+		// 			data: ii_full
+		// 		}]);
+
+		// 	},
+		// 	error: function (thrownError) {
+		// 		console.log(thrownError)
+		// 	}
+		// });
+		$('.hideButtonEnable').attr('hidden', true);
+		$('.hideButton').attr('hidden', false);
+		$('#buttonRange1').addClass('btn-secondary')
 	});
 }
 
 if (url.includes('recordRpeak')) {
 	document.getElementById("btn_convert").addEventListener("click", function () {
 		$.ajax({
-			url: base + "data/getdataPasien/" + url[5] + "/" + url[6],
+			url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -924,7 +967,7 @@ if (url.includes('recordRpeak')) {
 					anchorTag.click();
 				});
 				$.ajax({
-					url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/5",
+					url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/5",
 					type: 'POST',
 					dataType: 'json',
 					async: true,
@@ -945,13 +988,12 @@ if (url.includes('recordRpeak')) {
 
 	function download() {
 		$.ajax({
-			url: base + "data/getdataFull/" + url[5] + "/" + url[6],
+			url: base + "data/getdataFull/" + url[6] + "/" + url[7],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
 			cache: false,
 			success: function (response) {
-				console.log(response);
 				//define the heading for each row of the data  
 				var csv = 'timestamp;avf;avl;avr;i;ii;iii;v1;v2;v3;v4;v5;v6\n';
 
@@ -968,7 +1010,7 @@ if (url.includes('recordRpeak')) {
 
 				//provide the name for the CSV file to be downloaded 
 				$.ajax({
-					url: base + "data/getdataPasien/" + url[5] + "/" + url[6],
+					url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
 					type: 'POST',
 					dataType: 'json',
 					async: true,
@@ -977,7 +1019,7 @@ if (url.includes('recordRpeak')) {
 						hiddenElement.download = response.nama + "_recordAll_rekaman" + url[6] + '.csv';
 						hiddenElement.click();
 						$.ajax({
-							url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/1",
+							url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/1",
 							type: 'POST',
 							dataType: 'json',
 							async: true,
@@ -1003,13 +1045,12 @@ if (url.includes('recordRpeak')) {
 
 	function downloadII() {
 		$.ajax({
-			url: base + "data/getdataII/" + url[5] + "/" + url[6],
+			url: base + "data/getdataII/" + url[6] + "/" + url[7],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
 			cache: false,
 			success: function (response) {
-				console.log(response);
 				//define the heading for each row of the data  
 				var csv = 'timestamp;ii\n';
 
@@ -1026,7 +1067,7 @@ if (url.includes('recordRpeak')) {
 
 				//provide the name for the CSV file to be downloaded 
 				$.ajax({
-					url: base + "data/getdataPasien/" + url[5] + "/" + url[6],
+					url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
 					type: 'POST',
 					dataType: 'json',
 					async: true,
@@ -1035,7 +1076,7 @@ if (url.includes('recordRpeak')) {
 						hiddenElement.download = response.nama + "_recordII_rekaman" + url[6] + '.csv';
 						hiddenElement.click();
 						$.ajax({
-							url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/1",
+							url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/1",
 							type: 'POST',
 							dataType: 'json',
 							async: true,
@@ -1151,7 +1192,7 @@ if (url.includes('recordRpeak')) {
 
 	function checked() {
 		$.ajax({
-			url: base + "dokter/checkDataRekaman/" + url[5] + "/" + url[6],
+			url: base + "dokter/checkDataRekaman/" + url[6] + "/" + url[7],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -1161,7 +1202,7 @@ if (url.includes('recordRpeak')) {
 					$('#check').removeClass('btn-secondary');
 					$('#check').addClass('btn-success');
 					$.ajax({
-						url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/3",
+						url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/3",
 						type: 'POST',
 						dataType: 'json',
 						async: true,
@@ -1177,7 +1218,7 @@ if (url.includes('recordRpeak')) {
 					$('#check').removeClass('btn-success');
 					$('#check').addClass('btn-secondary');
 					$.ajax({
-						url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/5",
+						url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/5",
 						type: 'POST',
 						dataType: 'json',
 						async: true,
@@ -1208,14 +1249,14 @@ if (url.includes('recordRpeak')) {
 			const idButton = $(this).data("id");
 			var loopRange = $(this).data("id");
 			$.ajax({
-				url: base + "data/getDataRekaman/" + url[5] + "/" + url[6],
+				url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
 				method: "post",
 				dataType: "json",
 				// async: true,
 				// cache: false,
 				success: function (data) {
 					$.ajax({
-						url: base + "data/getdata/" + url[5] + "/" + url[6] + "/" + loopRange,
+						url: base + "data/getdata/" + url[6] + "/" + url[7] + "/" + loopRange,
 						type: 'POST',
 						dataType: 'json',
 						// async: true,
@@ -1614,7 +1655,7 @@ if (url.includes('recordRpeak')) {
 	$(document).ready(function () {
 		var loopRange = 1;
 		$.ajax({
-			url: base + "data/getDataRekaman/" + url[5] + "/" + url[6],
+			url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -1635,7 +1676,7 @@ if (url.includes('recordRpeak')) {
 			}
 		});
 		$.ajax({
-			url: base + "data/getdata/" + url[5] + "/" + url[6] + "/" + loopRange,
+			url: base + "data/getdata/" + url[6] + "/" + url[7] + "/" + loopRange,
 			type: 'POST',
 			dataType: 'json',
 			async: true,
