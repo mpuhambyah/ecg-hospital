@@ -5,6 +5,8 @@ class Dokter extends CI_Controller
 {
     public function __construct()
     {
+        var_dump("ea");
+        die;
         ini_set('memory_limit', '-1');
         parent::__construct();
         $data = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
