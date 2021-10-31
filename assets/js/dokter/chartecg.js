@@ -51,7 +51,7 @@ $(".downloadFileCSV").click(function () {
 if (url.includes('record')) {
 	document.getElementById("btn_convert").addEventListener("click", function () {
 		$.ajax({
-			url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
+			url: base + "data/getdataPasien/" + url[5] + "/" + url[6],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -70,7 +70,7 @@ if (url.includes('record')) {
 					anchorTag.click();
 				});
 				$.ajax({
-					url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/5",
+					url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/5",
 					type: 'POST',
 					dataType: 'json',
 					async: true,
@@ -91,7 +91,7 @@ if (url.includes('record')) {
 
 	function download() {
 		$.ajax({
-			url: base + "data/getdataFull/" + url[6] + "/" + url[7],
+			url: base + "data/getdataFull/" + url[5] + "/" + url[6],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -113,7 +113,7 @@ if (url.includes('record')) {
 
 				//provide the name for the CSV file to be downloaded 
 				$.ajax({
-					url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
+					url: base + "data/getdataPasien/" + url[5] + "/" + url[6],
 					type: 'POST',
 					dataType: 'json',
 					async: true,
@@ -122,7 +122,7 @@ if (url.includes('record')) {
 						hiddenElement.download = response.nama + "_recordAll_rekaman" + url[6] + '.csv';
 						hiddenElement.click();
 						$.ajax({
-							url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/1",
+							url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/1",
 							type: 'POST',
 							dataType: 'json',
 							async: true,
@@ -148,7 +148,7 @@ if (url.includes('record')) {
 
 	function downloadII() {
 		$.ajax({
-			url: base + "data/getdataII/" + url[6] + "/" + url[7],
+			url: base + "data/getdataII/" + url[5] + "/" + url[6],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -171,7 +171,7 @@ if (url.includes('record')) {
 
 				//provide the name for the CSV file to be downloaded 
 				$.ajax({
-					url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
+					url: base + "data/getdataPasien/" + url[5] + "/" + url[6],
 					type: 'POST',
 					dataType: 'json',
 					async: true,
@@ -180,7 +180,7 @@ if (url.includes('record')) {
 						hiddenElement.download = response.nama + "_recordII_rekaman" + url[6] + '.csv';
 						hiddenElement.click();
 						$.ajax({
-							url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/1",
+							url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/1",
 							type: 'POST',
 							dataType: 'json',
 							async: true,
@@ -296,7 +296,7 @@ if (url.includes('record')) {
 
 	function checked() {
 		$.ajax({
-			url: base + "dokter/checkDataRekaman/" + url[6] + "/" + url[7],
+			url: base + "dokter/checkDataRekaman/" + url[5] + "/" + url[6],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -306,7 +306,7 @@ if (url.includes('record')) {
 					$('#check').removeClass('btn-secondary');
 					$('#check').addClass('btn-success');
 					$.ajax({
-						url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/3",
+						url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/3",
 						type: 'POST',
 						dataType: 'json',
 						async: true,
@@ -322,7 +322,7 @@ if (url.includes('record')) {
 					$('#check').removeClass('btn-success');
 					$('#check').addClass('btn-secondary');
 					$.ajax({
-						url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/5",
+						url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/5",
 						type: 'POST',
 						dataType: 'json',
 						async: true,
@@ -353,14 +353,14 @@ if (url.includes('record')) {
 			const idButton = $(this).data("id");
 			var loopRange = $(this).data("id");
 			$.ajax({
-				url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
+				url: base + "data/getDataRekaman/" + url[5] + "/" + url[6],
 				method: "post",
 				dataType: "json",
 				// async: true,
 				// cache: false,
 				success: function (data) {
 					$.ajax({
-						url: base + "data/getdata/" + url[6] + "/" + url[7] + "/" + loopRange,
+						url: base + "data/getdata/" + url[5] + "/" + url[6] + "/" + loopRange,
 						type: 'POST',
 						dataType: 'json',
 						// async: true,
@@ -758,9 +758,9 @@ if (url.includes('record')) {
 
 	$(document).ready(function () {
 		var loopRange = 1;
-		console.log(base + "data/getDataRekaman/" + url[6] + "/" + url[7]);
+		console.log(base + "data/getDataRekaman/" + url[5] + "/" + url[6]);
 		$.ajax({
-			url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
+			url: base + "data/getDataRekaman/" + url[5] + "/" + url[6],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -781,7 +781,7 @@ if (url.includes('record')) {
 			}
 		});
 		$.ajax({
-			url: base + "data/getdata/" + url[6] + "/" + url[7] + "/" + loopRange,
+			url: base + "data/getdata/" + url[5] + "/" + url[6] + "/" + loopRange,
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -905,7 +905,7 @@ if (url.includes('record')) {
 if (url.includes('recordRpeak')) {
 	document.getElementById("btn_convert").addEventListener("click", function () {
 		$.ajax({
-			url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
+			url: base + "data/getdataPasien/" + url[5] + "/" + url[6],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -924,7 +924,7 @@ if (url.includes('recordRpeak')) {
 					anchorTag.click();
 				});
 				$.ajax({
-					url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/5",
+					url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/5",
 					type: 'POST',
 					dataType: 'json',
 					async: true,
@@ -945,7 +945,7 @@ if (url.includes('recordRpeak')) {
 
 	function download() {
 		$.ajax({
-			url: base + "data/getdataFull/" + url[6] + "/" + url[7],
+			url: base + "data/getdataFull/" + url[5] + "/" + url[6],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -968,7 +968,7 @@ if (url.includes('recordRpeak')) {
 
 				//provide the name for the CSV file to be downloaded 
 				$.ajax({
-					url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
+					url: base + "data/getdataPasien/" + url[5] + "/" + url[6],
 					type: 'POST',
 					dataType: 'json',
 					async: true,
@@ -977,7 +977,7 @@ if (url.includes('recordRpeak')) {
 						hiddenElement.download = response.nama + "_recordAll_rekaman" + url[6] + '.csv';
 						hiddenElement.click();
 						$.ajax({
-							url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/1",
+							url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/1",
 							type: 'POST',
 							dataType: 'json',
 							async: true,
@@ -1003,7 +1003,7 @@ if (url.includes('recordRpeak')) {
 
 	function downloadII() {
 		$.ajax({
-			url: base + "data/getdataII/" + url[6] + "/" + url[7],
+			url: base + "data/getdataII/" + url[5] + "/" + url[6],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -1026,7 +1026,7 @@ if (url.includes('recordRpeak')) {
 
 				//provide the name for the CSV file to be downloaded 
 				$.ajax({
-					url: base + "data/getdataPasien/" + url[6] + "/" + url[7],
+					url: base + "data/getdataPasien/" + url[5] + "/" + url[6],
 					type: 'POST',
 					dataType: 'json',
 					async: true,
@@ -1035,7 +1035,7 @@ if (url.includes('recordRpeak')) {
 						hiddenElement.download = response.nama + "_recordII_rekaman" + url[6] + '.csv';
 						hiddenElement.click();
 						$.ajax({
-							url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/1",
+							url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/1",
 							type: 'POST',
 							dataType: 'json',
 							async: true,
@@ -1151,7 +1151,7 @@ if (url.includes('recordRpeak')) {
 
 	function checked() {
 		$.ajax({
-			url: base + "dokter/checkDataRekaman/" + url[6] + "/" + url[7],
+			url: base + "dokter/checkDataRekaman/" + url[5] + "/" + url[6],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -1161,7 +1161,7 @@ if (url.includes('recordRpeak')) {
 					$('#check').removeClass('btn-secondary');
 					$('#check').addClass('btn-success');
 					$.ajax({
-						url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/3",
+						url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/3",
 						type: 'POST',
 						dataType: 'json',
 						async: true,
@@ -1177,7 +1177,7 @@ if (url.includes('recordRpeak')) {
 					$('#check').removeClass('btn-success');
 					$('#check').addClass('btn-secondary');
 					$.ajax({
-						url: base + "dokter/getActivities/" + url[6] + "/" + url[7] + "/5",
+						url: base + "dokter/getActivities/" + url[5] + "/" + url[6] + "/5",
 						type: 'POST',
 						dataType: 'json',
 						async: true,
@@ -1208,14 +1208,14 @@ if (url.includes('recordRpeak')) {
 			const idButton = $(this).data("id");
 			var loopRange = $(this).data("id");
 			$.ajax({
-				url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
+				url: base + "data/getDataRekaman/" + url[5] + "/" + url[6],
 				method: "post",
 				dataType: "json",
 				// async: true,
 				// cache: false,
 				success: function (data) {
 					$.ajax({
-						url: base + "data/getdata/" + url[6] + "/" + url[7] + "/" + loopRange,
+						url: base + "data/getdata/" + url[5] + "/" + url[6] + "/" + loopRange,
 						type: 'POST',
 						dataType: 'json',
 						// async: true,
@@ -1614,7 +1614,7 @@ if (url.includes('recordRpeak')) {
 	$(document).ready(function () {
 		var loopRange = 1;
 		$.ajax({
-			url: base + "data/getDataRekaman/" + url[6] + "/" + url[7],
+			url: base + "data/getDataRekaman/" + url[5] + "/" + url[6],
 			type: 'POST',
 			dataType: 'json',
 			async: true,
@@ -1635,7 +1635,7 @@ if (url.includes('recordRpeak')) {
 			}
 		});
 		$.ajax({
-			url: base + "data/getdata/" + url[6] + "/" + url[7] + "/" + loopRange,
+			url: base + "data/getdata/" + url[5] + "/" + url[6] + "/" + loopRange,
 			type: 'POST',
 			dataType: 'json',
 			async: true,
