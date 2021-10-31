@@ -202,8 +202,6 @@ class Dokter extends CI_Controller
         $data['id_rekaman'] = $id_rekaman;
         $data['JumlahlistMinute'] = $this->M_dokter->JumlahlistMinute($id, $id_rekaman);
         $data['listRekaman'] = round(intval($data['JumlahlistMinute']['jumlah']) / 12000);
-        var_dump($data['listRekaman']);
-        die;
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/navbar', $data);
