@@ -211,6 +211,8 @@ class Dokter extends CI_Controller
             $data['listRekaman'] = 1;
         } else {
             $data['listRekaman'] = floor(intval($data['JumlahlistMinute']['jumlah']) / 12000);
+            var_dump($data['listRekaman']);
+            die;
         }
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
