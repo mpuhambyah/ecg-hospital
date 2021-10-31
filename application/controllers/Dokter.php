@@ -210,7 +210,7 @@ class Dokter extends CI_Controller
         } else if (intval($data['JumlahlistMinute']['jumlah']) < 12000) {
             $data['listRekaman'] = 1;
         } else {
-            $data['listRekaman'] = floor(intval($data['JumlahlistMinute']['jumlah']) / 12000);
+            $data['listRekaman'] = ceil(intval($data['JumlahlistMinute']['jumlah']) / 12000);
             var_dump($data['listRekaman']);
             die;
         }
