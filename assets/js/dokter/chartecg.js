@@ -369,7 +369,7 @@ if (url.includes('record')) {
 						// async: true,
 						// cache: false,
 						success: function (response) {
-
+							console.log(response);
 							let i_new = response.map(({
 								i
 							}) => i);
