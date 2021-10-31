@@ -1262,6 +1262,7 @@ if (url.includes('recordRpeak')) {
 							}) => v6);
 							// console.log(loopRange * 800)
 							console.log(minR);
+							console.log(maxR);
 							// console.log(minR + ((((maxR - minR) + 1) / 4) - 1));
 							i_new = i_new.slice(0, minR + ((((maxR - minR) + 1) / 4) - 1));
 							ii_full_new = ii_new.slice(0, minR + (maxR - minR) * 2);
