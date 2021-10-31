@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>List Rekaman</h4>
+                        <h4>List Rekaman <?= $id_rekaman ?> - <?= $JumlahlistMinute['jumlah'] ?> Data</h4>
                     </div>
                     <?= $this->session->flashdata('message'); ?>
                     <div class="card-body p-0">
