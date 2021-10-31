@@ -15,7 +15,7 @@
                             <table class="table table-striped">
                                 <tr>
                                     <th>Rekaman</th>
-                                    <th>Durasi</th>
+                                    <th>Total Data</th>
                                     <th>Status</th>
                                     <th>Tanggal Rekaman</th>
                                     <th>Action</th>
@@ -24,7 +24,7 @@
                                 foreach ($listRekaman as $l) : ?>
                                     <tr>
                                         <td class="font-weight-600">Rekaman <?= $l['id_rekaman'] ?></td>
-                                        <td class="font-weight-600"><?= $duration[$i] ?> Menit</td>
+                                        <td class="font-weight-600"><?= $duration[$i] ?> Data</td>
                                         <td>
                                             <?php if ($l['status'] == 0) { ?>
                                                 <div class="badge badge-warning">Uncheked</div>

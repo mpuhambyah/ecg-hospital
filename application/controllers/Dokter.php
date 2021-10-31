@@ -182,8 +182,8 @@ class Dokter extends CI_Controller
         $data['listRekaman'] = $this->M_dokter->listRekaman($id);
         for ($i = 0; $i < count($data['listRekaman']); $i++) {
             $data['JumlahlistMinute'] = $this->M_dokter->JumlahlistMinute($id, $data['listRekaman'][$i]['id_rekaman']);
-            $temp = intval($data['JumlahlistMinute']['jumlah']) / 12000;
-            array_push($tempData, round($temp));
+            $temp = intval($data['JumlahlistMinute']['jumlah']);
+            array_push($tempData, $temp);
         }
         $data['duration'] = $tempData;
         $this->load->view('template/header', $data);
