@@ -194,6 +194,9 @@ class Dokter extends CI_Controller
         $this->load->model('M_dokter');
         $id = $this->uri->segment(3);
         $id_rekaman = $this->uri->segment(4);
+        var_dump($id);
+        var_dump($id_rekaman);
+        die;
         $data['pasien'] = $this->db->get_where('pasien', ['id' => $id])->row_array();
         $data['id'] =  $id;
         $data['id_rekaman'] = $id_rekaman;
