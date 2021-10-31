@@ -1208,6 +1208,7 @@ if (url.includes('recordRpeak')) {
 			const minR = $(this).data("min");
 			const idButton = $(this).data("id");
 			var loopRange = $(this).data("id");
+			console.log(url[5]);
 			$.ajax({
 				url: base + "data/getDataRekaman/" + url[5] + "/" + url[6],
 				method: "post",
