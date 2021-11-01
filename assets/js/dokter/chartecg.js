@@ -382,10 +382,7 @@ if (url.includes('record')) {
 						url: base + "data/getdata/" + url[5] + "/" + url[6] + "/" + loopRange,
 						type: 'POST',
 						dataType: 'json',
-						// async: true,
-						// cache: false,
 						success: function (response) {
-
 							let i_new = response.map(({
 								i
 							}) => i);
@@ -423,46 +420,54 @@ if (url.includes('record')) {
 							let v6_new = response.map(({
 								v6
 							}) => v6);
-							// console.log(loopRange * 800)
-							console.log(minR);
-							// console.log(minR + ((((maxR - minR) + 1) / 4) - 1));
-							i_new = i_new.slice(minR, minR + ((((maxR - minR) + 1) / 4)));
-							ii_full_new = ii_new.slice(minR, minR + (maxR - minR) * 2);
-							ii_new = ii_new.slice(minR, minR + ((((maxR - minR) + 1) / 4)));
-							iii_new = iii_new.slice(minR, minR + ((((maxR - minR) + 1) / 4)));
-							avr_new = avr_new.slice(minR + ((((maxR - minR) + 1) / 4) - 1), minR + (((maxR - minR) + 1) / 2) - 1);
-							avl_new = avl_new.slice(minR + ((((maxR - minR) + 1) / 4) - 1), minR + (((maxR - minR) + 1) / 2) - 1);
-							avf_new = avf_new.slice(minR + ((((maxR - minR) + 1) / 4) - 1), minR + (((maxR - minR) + 1) / 2) - 1);
-							v1_new = v1_new.slice(minR + ((((maxR - minR) + 1) / 2) - 1), minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
-							v2_new = v2_new.slice(minR + ((((maxR - minR) + 1) / 2) - 1), minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
-							v3_new = v3_new.slice(minR + ((((maxR - minR) + 1) / 2) - 1), minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
-							v4_new = v4_new.slice(minR + (((((maxR - minR) + 1) / 4) * 3)), minR + (maxR - minR) * 2);
-							v5_new = v5_new.slice(minR + (((((maxR - minR) + 1) / 4) * 3)), minR + (maxR - minR) * 2);
-							v6_new = v6_new.slice(minR + (((((maxR - minR) + 1) / 4) * 3)), minR + (maxR - minR) * 2);
 
-							console.log(i_new);
-							console.log(avr_new);
-							console.log(v1_new);
-							console.log(v4_new);
+							i_new = sliceNewFull(i_new, minR);
+							ii_full_new = sliceNewFull(ii_new, minR);
+							ii_new = sliceNewFull(ii_new, minR);
+							iii_new = sliceNewFull(iii_new, minR);
+							avr_new = sliceNewFull(avr_new, minR);
+							avl_new = sliceNewFull(avl_new, minR);
+							avf_new = sliceNewFull(avf_new, minR);
+							v1_new = sliceNewFull(v1_new, minR);
+							v2_new = sliceNewFull(v2_new, minR);
+							v3_new = sliceNewFull(v3_new, minR);
+							v4_new = sliceNewFull(v4_new, minR);
+							v5_new = sliceNewFull(v5_new, minR);
+							v6_new = sliceNewFull(v6_new, minR);
 
-							i_new = sliceNew(i_new, minR);
-							ii_full_new = sliceNewFull(ii_full_new, minR);
-							ii_new = sliceNew(ii_new, minR);
-							iii_new = sliceNew(iii_new, minR);
-							avr_new = sliceNew(avr_new, minR + (((maxR - minR) + 1) / 4));
-							avl_new = sliceNew(avl_new, minR + (((maxR - minR) + 1) / 4));
-							avf_new = sliceNew(avf_new, minR + (((maxR - minR) + 1) / 4));
-							v1_new = sliceNew(v1_new, minR + (((maxR - minR) + 1) / 2));
-							v2_new = sliceNew(v2_new, minR + (((maxR - minR) + 1) / 2));
-							v3_new = sliceNew(v3_new, minR + (((maxR - minR) + 1) / 2));
-							v4_new = sliceNew(v4_new, minR + (((((maxR - minR) + 1) / 4) * 3)));
-							v5_new = sliceNew(v5_new, minR + (((((maxR - minR) + 1) / 4) * 3)));
-							v6_new = sliceNew(v6_new, minR + (((((maxR - minR) + 1) / 4) * 3)));
+							// console.log(iii_new);
+							// console.log(avf_new);
+							// console.log(v3_new);
+							// console.log(v6_new);
+							// console.log(ii_full_new);
 
-							console.log(i_new);
-							console.log(avr_new);
-							console.log(v1_new);
-							console.log(v4_new);
+							// i_new = i_new.slice(minR, minR + ((((maxR - minR) + 1) / 4)));
+							// // ii_full_new = ii_new.slice(minR, minR + (maxR - minR) * 2);
+							// ii_new = ii_new.slice(minR, minR + ((((maxR - minR) + 1) / 4)));
+							// iii_new = iii_new.slice(minR, minR + ((((maxR - minR) + 1) / 4)) - 1);
+							// console.log(minR);
+							// console.log(minR + ((((maxR - minR) + 1) / 4)) - 1);
+							// avr_new = avr_new.slice(minR + ((((maxR - minR) + 1) / 4) - 1), minR + (((maxR - minR) + 1) / 2) - 1);
+							// avl_new = avl_new.slice(minR + ((((maxR - minR) + 1) / 4) - 1), minR + (((maxR - minR) + 1) / 2) - 1);
+							// avf_new = avf_new.slice(minR + ((((maxR - minR) + 1) / 4)), minR + (((maxR - minR) + 1) / 2) - 1);
+							// console.log(minR + (((maxR - minR) + 1) / 4));
+							// console.log(minR + (((maxR - minR) + 1) / 2) - 1);
+							// v1_new = v1_new.slice(minR + ((((maxR - minR) + 1) / 2) - 1), minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
+							// v2_new = v2_new.slice(minR + ((((maxR - minR) + 1) / 2) - 1), minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
+							// v3_new = v3_new.slice(minR + ((((maxR - minR) + 1) / 2)), minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
+							// console.log(minR + (((maxR - minR) + 1) / 2));
+							// console.log(minR + (((((maxR - minR) + 1) / 4) * 3) - 1));
+							// v4_new = v4_new.slice(minR + (((((maxR - minR) + 1) / 4) * 3)), minR + (maxR - minR) * 2);
+							// v5_new = v5_new.slice(minR + (((((maxR - minR) + 1) / 4) * 3)), minR + (maxR - minR) * 2);
+							// v6_new = v6_new.slice(minR + (((((maxR - minR) + 1) / 4) * 3)), maxR);
+							// console.log(minR + (((((maxR - minR) + 1) / 4) * 3)));
+							// console.log(maxR);
+
+							// console.log(iii_new);
+							// console.log(avf_new);
+							// console.log(v3_new);
+							// console.log(v6_new);
+							// console.log(ii_full_new);
 
 
 							chart_i.updateOptions({
@@ -1300,9 +1305,6 @@ if (url.includes('recordRpeak')) {
 							let v6_new = response.map(({
 								v6
 							}) => v6);
-							// console.log(loopRange * 800)
-							console.log(minR);
-							// console.log(minR + ((((maxR - minR) + 1) / 4) - 1));
 							i_new = i_new.slice(0, minR + ((((maxR - minR) + 1) / 4) - 1));
 							ii_full_new = ii_new.slice(0, minR + (maxR - minR) * 2);
 							ii_new = ii_new.slice(0, minR + ((((maxR - minR) + 1) / 4) - 1));

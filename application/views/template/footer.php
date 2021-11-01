@@ -39,7 +39,7 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
 
 
-<script src="<?= base_url() ?>assets/js/dokter/chartecg.js"></script>
+<script src="<?= base_url() ?>assets/js/dokter/chartecg.js?v=1"></script>
 <script src="<?= base_url() ?>assets/js/dokter/script.js"></script>
 <script src="<?= base_url() ?>assets/js/dokter/scripts.js"></script>
 <script src="<?= base_url() ?>assets/js/dokter/custom.js"></script>
