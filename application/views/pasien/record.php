@@ -3,7 +3,9 @@
         <div class="row section-header">
             <h1 class="col-7"><?= $listRekaman[0]['nama'] ?> - Rekaman <?= $id_rekaman ?> - Menit <?= $minute ?></h1>
             <div class="col-5 text-right hideButton" hidden>
-
+                <div hidden>
+                    <button id="check" onclick="checked();" class="btn btn-icon mr-2" hidden><i class="fas fa-check" aria-hidden="true"></i></button>
+                </div>
                 <button class="btn btn-icon mr-2 btn-primary" id="btn_convert"><i class="fa fa-camera" aria-hidden="true"></i></button>
                 <div id="previewImg" hidden>
                 </div>
