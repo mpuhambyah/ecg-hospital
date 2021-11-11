@@ -15,9 +15,22 @@
                     <a href="<?= base_url() ?>dokter/profile" class="dropdown-item has-icon">
                         <i class="far fa-user"></i> Profile
                     </a>
-                <?php } else { ?>
+                    <a href="<?= base_url() ?>dokter/gantiPassword" class="dropdown-item has-icon">
+                        <i class="fas fa-key"></i> Ganti Password
+                    </a>
+                <?php } else if ($user['role_id'] == 2) { ?>
                     <a href="<?= base_url() ?>alat/profile" class="dropdown-item has-icon">
                         <i class="far fa-user"></i> Profile
+                    </a>
+                    <a href="<?= base_url() ?>alat/gantiPassword" class="dropdown-item has-icon">
+                        <i class="fas fa-key"></i> Ganti Password
+                    </a>
+                <?php } else if ($user['role_id'] == 3) { ?>
+                    <a href="<?= base_url() ?>pasien/profile" class="dropdown-item has-icon">
+                        <i class="far fa-user"></i> Profile
+                    </a>
+                    <a href="<?= base_url() ?>pasien/gantiPassword" class="dropdown-item has-icon">
+                        <i class="fas fa-key"></i> Ganti Password
                     </a>
                 <?php } ?>
                 <a class="dropdown-item has-icon text-danger" data-toggle="modal" data-target="#logoutModal">

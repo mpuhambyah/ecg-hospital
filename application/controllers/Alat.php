@@ -9,8 +9,10 @@ class Alat extends CI_Controller
         $data = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         if (!$this->session->userdata('email')) {
             redirect(base_url('auth'));
-        } else if ($data['role_id'] != 2) {
+        } else if ($data['role_id'] == 1) {
             redirect(base_url('dokter'));
+        } else {
+            redirect(base_url('pasien'));
         }
     }
 
