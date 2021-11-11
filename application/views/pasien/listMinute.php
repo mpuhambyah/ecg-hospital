@@ -21,7 +21,7 @@
                                     <tr>
                                         <td class="font-weight-600">Menit ke-<?= $i ?></td>
                                         <td>
-                                            <a href="<?= base_url() ?>a/record/<?= $id . "/" . $id_rekaman . "/" . $i ?>" class="btn btn-primary">Detail</a>
+                                            <a href="<?= base_url() ?>pasien/record/<?= $id . "/" . $id_rekaman . "/" . $i ?>" class="btn btn-primary">Detail</a>
                                         </td>
                                     </tr>
                                 <?php } ?>

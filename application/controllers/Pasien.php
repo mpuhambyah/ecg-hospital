@@ -76,7 +76,7 @@ class Pasien extends CI_Controller
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/navbar', $data);
-        $this->load->view('dokter/listMinute', $data);
+        $this->load->view('pasien/listMinute', $data);
         $this->load->view('template/footer', $data);
     }
 
