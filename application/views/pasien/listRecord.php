@@ -31,8 +31,7 @@
                                         </td>
                                         <td><?= date('d-m-Y H:i:s', $l['tanggal']) ?></td>
                                         <td>
-                                            <a href="<?= base_url() ?>pasien/record/<?= $l['id'] . "/" . $l['id_rekaman'] ?>" class="btn btn-primary">Detail</a>
-                                            <a data-toggle="modal" data-target="#deleteModal" class="deleteRecordPasien btn btn-danger" data-id=<?= $l['id'] ?> data-id_rekaman=<?= $l['id_rekaman'] ?> style="color:white">Delete</a>
+                                            <a href="<?= base_url() ?>pasien/listMinute/<?= $l['id'] . "/" . $l['id_rekaman'] ?>" class="btn btn-primary">Detail</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
