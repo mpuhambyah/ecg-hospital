@@ -20,7 +20,7 @@ class Pasien extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         $data['profile'] = $this->db->get('profile')->row_array();
-        $data['title'] = "List Pasien";
+        $data['title'] = "Rekaman";
         $this->load->model('M_dokter');
         $id = $this->db->get_where('pasien', ['nik' => $this->session->userdata('email')])->row_array();
         $data['pasien'] = $this->db->get_where('pasien', ['id' => $id['id']])->row_array();
