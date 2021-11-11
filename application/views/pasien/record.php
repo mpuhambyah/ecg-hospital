@@ -5,12 +5,13 @@
             <div class="col-5 text-right hideButton" hidden>
                 <div hidden>
                     <button id="check" onclick="checked();" class="btn btn-icon mr-2" hidden><i class="fas fa-check" aria-hidden="true"></i></button>
+
+                    <button class="btn btn-icon mr-2 btn-primary" id="btn_convert"><i class="fa fa-camera" aria-hidden="true"></i></button>
+                    <div id="previewImg" hidden>
+                    </div>
+                    <button style="color:white" class="btn btn-icon mr-2 btn-primary" onclick="download();"><i class="fas fa-download"></i> CSV SEMUA</button>
+                    <button style="color:white" class="btn btn-icon mr-2 btn-primary" onclick="downloadII();"><i class="fas fa-download"></i> CSV LEAD II</button>
                 </div>
-                <button class="btn btn-icon mr-2 btn-primary" id="btn_convert"><i class="fa fa-camera" aria-hidden="true"></i></button>
-                <div id="previewImg" hidden>
-                </div>
-                <button style="color:white" class="btn btn-icon mr-2 btn-primary" onclick="download();"><i class="fas fa-download"></i> CSV SEMUA</button>
-                <button style="color:white" class="btn btn-icon mr-2 btn-primary" onclick="downloadII();"><i class="fas fa-download"></i> CSV LEAD II</button>
                 <button id="FS" class="btn btn-icon mr-2 btn-info" onclick="openFullscreen();"><i class="fa fa-expand" aria-hidden="true"></i></button>
                 <button id="closeFS" class="btn btn-icon mr-2 btn-danger" onclick="closeFullscreen();" hidden><i class="fas fa-compress"></i></button>
             </div>
