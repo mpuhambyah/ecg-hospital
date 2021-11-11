@@ -12,7 +12,7 @@ class Dokter extends CI_Controller
             redirect(base_url('auth'));
         } else if ($data['role_id'] == 2) {
             redirect(base_url('alat'));
-        } else {
+        } else if ($data['role_id'] == 3) {
             redirect(base_url('pasien'));
         }
     }
