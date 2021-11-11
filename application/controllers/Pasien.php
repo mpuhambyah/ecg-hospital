@@ -23,6 +23,8 @@ class Pasien extends CI_Controller
         $data['title'] = "List Pasien";
         $this->load->model('M_dokter');
         $id = $this->db->get_where('pasien', ['nik' => $this->session->userdata('email')])->row_array();
+        var_dump($id['id']);
+        die;
         $data['pasien'] = $this->db->get_where('pasien', ['id' => $id['id']])->row_array();
         $data['listRekaman'] = $this->M_dokter->listRekaman($$id['id']);
         $this->load->view('template/header', $data);
