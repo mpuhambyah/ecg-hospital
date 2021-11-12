@@ -15,7 +15,7 @@
                             <div class="author-box-name">
                                 <a href="#"><?= $profileUser['nama'] ?></a>
                             </div>
-                            <div class="author-box-job"><?= $profileUser['role'] ?> / <?= $profileUser['email'] ?></div>
+                            <div class="author-box-job"><?= $profileUser['role'] ?> / <?= $profileUser['username'] ?></div>
                             <?php if ($profileUser['is_active'] == 1) { ?>
                                 <div class="author-box-job">AKTIF bergabung pada <?= date('d-m-Y H:i:s', $l['date_created']) ?></div>
                             <?php } else { ?>
