@@ -1,7 +1,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Upload File</h1>
+            <h1>Setting</h1>
         </div>
         <div class="card">
             <div class="card-header">
