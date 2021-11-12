@@ -17,9 +17,9 @@
                             </div>
                             <div class="author-box-job"><?= $profileUser['role'] ?> / <?= $profileUser['username'] ?></div>
                             <?php if ($profileUser['is_active'] == 1) { ?>
-                                <div class="author-box-job">AKTIF bergabung pada <?= date('d-m-Y H:i:s', $l['date_created']) ?></div>
+                                <div class="author-box-job">AKTIF bergabung pada <?= date('d-m-Y H:i:s', $profileUser['date_created']) ?></div>
                             <?php } else { ?>
-                                <div class="author-box-job">TIDAK AKTIF bergabung pada <?= date('d-m-Y H:i:s', $l['date_created']) ?></div>
+                                <div class="author-box-job">TIDAK AKTIF bergabung pada <?= date('d-m-Y H:i:s', $profileUser['date_created']) ?></div>
                             <?php } ?>
                             <?php if ($profileUser['alamat'] != NULL) { ?>
                                 <div class="author-box-description">
