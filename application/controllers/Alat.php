@@ -128,10 +128,8 @@ class Alat extends CI_Controller
         $pasien = $this->db->get_where('pasien', ['id' => $id])->row_array();
         // $this->db->where('id', $id);
         // $this->db->delete('pasien');
-        // $this->db->where('email', $pasien['NIK']);
-        // $this->db->delete('user');
-        $this->db->delete('pasien', array('id', $id));
-        $this->db->delete('user', array('email', $pasien['NIK']));
+        $this->db->where('email', $pasien['NIK']);
+        $this->db->delete('user');
         var_dump("oke");
         die;
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
