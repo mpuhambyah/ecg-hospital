@@ -162,7 +162,9 @@ class Alat extends CI_Controller
     {
         $pasien = $this->db->get_where('pasien', ['id' => $id])->row_array();
         $data = [
-            "is_active" => 0
+            "is_active" => 0,
+            "password" => '$2y$10$ve4j.jZy5sXIvHoPgf2WvuBiK2fMy2yf5cCpIBtmSbIqGwiLEhaky', //000000
+
         ];
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
         Pasien berhasil di nonaktifkan!

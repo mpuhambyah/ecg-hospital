@@ -51,9 +51,6 @@ class Pasien extends CI_Controller
         } else {
             $current_password = $this->input->post('current_password');
             $new_password = $this->input->post('new_password1');
-            var_dump($current_password);
-            var_dump($new_password);
-            die;
             if (!password_verify($current_password, $data['user']['password'])) {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                   Kata sandi lama salah!
