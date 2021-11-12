@@ -3,6 +3,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_data extends CI_Model
 {
+  public function listPasienAPI($id)
+  {
+    $query = "SELECT pasien.id, pasien.id_alat, pasien.nik,  pasien.nama as 'nama', pasien.alamat, user.is_active
+    FROM pasien 
+    INNER JOIN user ON pasien.NIK = user.email
+    WHERE user.is_active = 1 AND pasien.id_alat = $id";
+
+    return $this->db->query($query)->result_array();
+  }
+
   public function dataEcgFull($id_pasien, $id)
   {
     $query = "SELECT ecg.timestamp, ecg.i, ecg.ii, ecg.iii, ecg.avr, ecg.avl, ecg.avf, ecg.v1, ecg.v2, ecg.v3, ecg.v4, ecg.v5, ecg.v6 FROM ecg WHERE id_pasien = $id_pasien AND id_rekaman = $id ORDER BY id DESC";

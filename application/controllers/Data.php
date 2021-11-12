@@ -33,7 +33,8 @@ class Data extends CI_Controller
     {
         $alat = $this->db->get_where('alat', ['key_api' => $id])->row_array();
         $id = $alat['id'];
-        $data = $this->db->get_where('pasien', ['id_alat' => $id])->result_array();
+        $this->load->model('M_data');
+        $data = $this->M_data->listPasienAPI($id);
         echo json_encode($data);
     }
 
