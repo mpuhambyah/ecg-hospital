@@ -45,9 +45,9 @@ class Pasien extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar', $data);
-            $this->load->view('template/topbar', $data);
+            $this->load->view('template/navbar', $data);
             $this->load->view('pasien/gantiPassword', $data);
-            $this->load->view('template/footer');
+            $this->load->view('template/footer', $data);
         } else {
             $current_password = $this->input->post('current_password');
             $new_password = $this->input->post('new_password1');
