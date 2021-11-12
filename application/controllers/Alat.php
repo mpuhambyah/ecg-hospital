@@ -128,7 +128,7 @@ class Alat extends CI_Controller
         $pasien = $this->db->get_where('pasien', ['id' => $id])->row_array();
         $this->db->where('id', $id);
         $this->db->delete('pasien');
-        $this->db->where('email', $pasien['nik']);
+        $this->db->where('email', $pasien['NIK']);
         $this->db->delete('user');
         var_dump("oke");
         die;
