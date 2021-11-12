@@ -131,7 +131,7 @@ class Alat extends CI_Controller
         // $this->db->where('email', $pasien['NIK']);
         // $this->db->delete('user');
         $this->db->delete('pasien', array('id', $id));
-        $this->db->delete('email', array('NIK', $pasien['NIK']));
+        $this->db->delete('user', array('NIK', $pasien['NIK']));
         var_dump("oke");
         die;
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
