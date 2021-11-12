@@ -109,15 +109,17 @@ class Alat extends CI_Controller
             "nama" => $this->input->post('nama'),
             "alamat" => $this->input->post('alamat'),
         ];
-        $password_hash = password_hash($data['NIK'], PASSWORD_DEFAULT);
-        // $this->db->set('password', $password_hash);
-        $id = password_verify($data['nama'], $password_hash);
-        var_dump($data['nama']);
-        var_dump(password_hash($data['nama'], PASSWORD_DEFAULT));
-        var_dump($password_hash);
-        var_dump($id);
-        die;
+        $dataUser = [
+            "name" =>  $this->input->post('nama'),
+            "email" => $this->input->post('nik'),
+            "image" => "def.jpg",
+            "password" => '$2y$10$ve4j.jZy5sXIvHoPgf2WvuBiK2fMy2yf5cCpIBtmSbIqGwiLEhaky', //000000
+            "role_id" => 3,
+            "is_active" => 1,
+            "date_created" => now()
+        ];
         $this->db->insert('pasien', $data);
+        $this->db->insert('user', $dataUser);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pasien berhasil ditambahkan</div>');
         redirect(base_url('alat'));
     }
