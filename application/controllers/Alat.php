@@ -128,7 +128,7 @@ class Alat extends CI_Controller
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/navbar', $data);
-        $this->load->view('dokter/profile', $data);
+        $this->load->view('tenmplate/profile', $data);
         $this->load->view('template/footer', $data);
     }
 
