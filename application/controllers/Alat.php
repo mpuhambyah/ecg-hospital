@@ -126,12 +126,8 @@ class Alat extends CI_Controller
     public function deletePasien($id)
     {
         $pasien = $this->db->get_where('pasien', ['id' => $id])->row_array();
-        // $this->db->where('id', $id);
-        // $this->db->delete('pasien');
         $this->db->where('email', $pasien['NIK']);
         $this->db->delete('user');
-        var_dump("oke");
-        die;
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
               Pasien berhasil dihapus!
               </div>');
@@ -142,6 +138,8 @@ class Alat extends CI_Controller
             "id_rekaman" => $id,
             "created_at" => time()
         ];
+        $this->db->where('id', $id);
+        $this->db->delete('pasien');
         $this->db->insert('activities', $data_activities);
         redirect(base_url('alat/'));
     }
