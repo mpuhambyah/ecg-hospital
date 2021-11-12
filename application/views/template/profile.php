@@ -13,9 +13,9 @@
                         </div>
                         <div class="author-box-details">
                             <div class="author-box-name">
-                                <a href="#">Dr. Mpu</a>
+                                <a href="#"><?= $profileUser['nama'] ?></a>
                             </div>
-                            <div class="author-box-job">Dokter / Rumah Sakit ABC</div>
+                            <div class="author-box-job"><?= $profileUser['role'] ?></div>
                             <div class="author-box-description">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
