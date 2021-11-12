@@ -127,6 +127,7 @@ class Alat extends CI_Controller
         $data['title'] = "Profile";
         $this->load->model('M_data');
         $data['profileUser'] = $this->M_data->dataProfile($this->session->userdata('id'));
+        var_dump($this->session->userdata('id'));
         var_dump($data['profileUser']);
         die;
         $this->load->view('template/header', $data);
