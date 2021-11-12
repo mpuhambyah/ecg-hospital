@@ -26,7 +26,7 @@
             <div class="d-flex flex-wrap align-items-stretch">
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="mx-5" style="margin-top:50%">
-                        <h4 class="text-dark font-weight-normal">Admin Page <span class="font-weight-bold"><?= $profile['title'] ?></span></h4>
+                        <h4 class="text-dark font-weight-normal">Website <span class="font-weight-bold"><?= $profile['title'] ?></span></h4>
                         <?= $this->session->flashdata('message'); ?>
                         <form class="user" method="POST" action="<?= base_url('auth'); ?>">
                             <div class="form-group">
