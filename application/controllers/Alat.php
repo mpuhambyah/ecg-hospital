@@ -109,10 +109,12 @@ class Alat extends CI_Controller
             "nama" => $this->input->post('nama'),
             "alamat" => $this->input->post('alamat'),
         ];
-        // $password_hash = password_hash($data['NIK'], PASSWORD_DEFAULT);
+        $password_hash = password_hash($data['NIK'], PASSWORD_DEFAULT);
         // $this->db->set('password', $password_hash);
-        $id = password_verify($data['nama'], $user['password']);
-        var_dump("test");
+        $id = password_verify($data['nama'], $password_hash);
+        var_dump($data['nama']);
+        var_dump(password_hash($data['nama'], PASSWORD_DEFAULT));
+        var_dump($password_hash);
         var_dump($id);
         die;
         $this->db->insert('pasien', $data);
