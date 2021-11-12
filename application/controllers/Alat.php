@@ -23,8 +23,6 @@ class Alat extends CI_Controller
         $data['title'] = "List Pasien";
         $this->load->model('M_alat');
         $data['listPasien'] = $this->M_alat->listPasien();
-        var_dump($data['listPasien']);
-        die;
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/navbar', $data);
@@ -152,6 +150,9 @@ class Alat extends CI_Controller
         $data = [
             "is_active" => 1
         ];
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Pasien berhasil di aktifkan!
+        </div>');
         $this->db->where('email', $pasien['NIK']);
         $this->db->update('user', $data);
         redirect(base_url('alat/'));
@@ -163,6 +164,9 @@ class Alat extends CI_Controller
         $data = [
             "is_active" => 0
         ];
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Pasien berhasil di nonaktifkan!
+        </div>');
         $this->db->where('email', $pasien['NIK']);
         $this->db->update('user', $data);
         redirect(base_url('alat/'));

@@ -27,6 +27,11 @@
                                         <td><?= $l['nik'] ?></td>
                                         <td><?= $l['alamat'] ?></td>
                                         <td>
+                                            <?php if ($l['aktivasi'] == 1) { ?>
+                                                <a href="<?= base_url() ?>alat/listRecord/<?= $l['id'] ?>" class="btn btn-success">Aktif</a>
+                                            <?php } else {  ?>
+                                                <a href="<?= base_url() ?>alat/listRecord/<?= $l['id'] ?>" class="btn btn-secondary">Tidak Aktif</a>
+                                            <?php } ?>
                                             <a href="<?= base_url() ?>alat/listRecord/<?= $l['id'] ?>" class="btn btn-primary">Detail</a>
                                             <a href="<?= base_url() ?>alat/editPasien/<?= $l['id'] ?>" class="btn btn-primary">Edit</a>
                                             <a data-toggle="modal" data-target="#deleteModal" class="deletePasien btn btn-danger" data-id=<?= $l['id'] ?> style="color:white">Delete</a>
