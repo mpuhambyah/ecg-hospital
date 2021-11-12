@@ -101,6 +101,7 @@ class Alat extends CI_Controller
 
     public function addPasien()
     {
+        $user = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         $data['alat'] = $this->db->get_where('alat', ['id_user' => $this->session->userdata('id')])->row_array();
         $data = [
             "id_alat" => $data['alat']['id'],
@@ -110,7 +111,8 @@ class Alat extends CI_Controller
         ];
         $password_hash = password_hash($data['NIK'], PASSWORD_DEFAULT);
         // $this->db->set('password', $password_hash);
-        var_dump($password_hash);
+        $id = password_verify($password_hash, $user['password']);
+        var_dump($id);
         die;
         $this->db->insert('pasien', $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pasien berhasil ditambahkan</div>');
