@@ -23,6 +23,8 @@ class Alat extends CI_Controller
         $data['title'] = "List Pasien";
         $this->load->model('M_alat');
         $data['listPasien'] = $this->M_alat->listPasien();
+        var_dump($data['listPasien']);
+        die;
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/navbar', $data);
@@ -141,6 +143,28 @@ class Alat extends CI_Controller
         $this->db->where('id', $id);
         $this->db->delete('pasien');
         $this->db->insert('activities', $data_activities);
+        redirect(base_url('alat/'));
+    }
+
+    public function activePasien($id)
+    {
+        $pasien = $this->db->get_where('pasien', ['id' => $id])->row_array();
+        $data = [
+            "is_active" => 1
+        ];
+        $this->db->where('email', $pasien['NIK']);
+        $this->db->update('user', $data);
+        redirect(base_url('alat/'));
+    }
+
+    public function deactivePasien($id)
+    {
+        $pasien = $this->db->get_where('pasien', ['id' => $id])->row_array();
+        $data = [
+            "is_active" => 0
+        ];
+        $this->db->where('email', $pasien['NIK']);
+        $this->db->update('user', $data);
         redirect(base_url('alat/'));
     }
 
