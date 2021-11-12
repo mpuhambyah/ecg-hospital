@@ -28,9 +28,9 @@
                                         <td><?= $l['alamat'] ?></td>
                                         <td>
                                             <?php if ($l['aktivasi'] == 1) { ?>
-                                                <a href="<?= base_url() ?>alat/listRecord/<?= $l['id'] ?>" class="btn btn-success">Aktif</a>
+                                                <a href="<?= base_url() ?>alat/deactivePasien/<?= $l['id'] ?>" class="btn btn-success">Aktif</a>
                                             <?php } else {  ?>
-                                                <a href="<?= base_url() ?>alat/listRecord/<?= $l['id'] ?>" class="btn btn-secondary">Tidak Aktif</a>
+                                                <a href="<?= base_url() ?>alat/activePasien/<?= $l['id'] ?>" class="btn btn-secondary">Tidak Aktif</a>
                                             <?php } ?>
                                             <a href="<?= base_url() ?>alat/listRecord/<?= $l['id'] ?>" class="btn btn-primary">Detail</a>
                                             <a href="<?= base_url() ?>alat/editPasien/<?= $l['id'] ?>" class="btn btn-primary">Edit</a>
