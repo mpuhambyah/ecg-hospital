@@ -15,16 +15,16 @@
                             <div class="author-box-name">
                                 <a href="#"><?= $profileUser['nama'] ?></a>
                             </div>
+                            <?php if ($profileUser['alamat'] != NULL) { ?>
+                                <div class="author-box-description">
+                                    <p><?= $profileUser['alamat'] ?></p>
+                                </div>
+                            <?php } ?>
                             <div class="author-box-job"><?= $profileUser['role'] ?> / <?= $profileUser['username'] ?></div>
                             <?php if ($profileUser['is_active'] == 1) { ?>
                                 <div class="author-box-job">Akun telah aktif bergabung pada <?= date('d-m-Y H:i:s', $profileUser['date_created']) ?></div>
                             <?php } else { ?>
                                 <div class="author-box-job">Akun sedang non-aktif bergabung pada <?= date('d-m-Y H:i:s', $profileUser['date_created']) ?></div>
-                            <?php } ?>
-                            <?php if ($profileUser['alamat'] != NULL) { ?>
-                                <div class="author-box-description">
-                                    <p><?= $profileUser['alamat'] ?></p>
-                                </div>
                             <?php } ?>
                         </div>
                     </div>
