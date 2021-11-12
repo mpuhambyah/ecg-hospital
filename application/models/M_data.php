@@ -6,7 +6,7 @@ class M_data extends CI_Model
 
   public function dataProfile($id)
   {
-    $query = "SELECT user.name as 'nama', user.email as 'username', user.is_activem, user.date_created, pasien.alamat, user_role.name as 'role'
+    $query = "SELECT user.name as 'nama', user.email as 'username', user.is_active, user.date_created, pasien.alamat, user_role.name as 'role'
     FROM user 
     INNER JOIN pasien ON user.email = pasien.NIK 
     INNER JOIN user_role ON user.role_id = user_role.id 
