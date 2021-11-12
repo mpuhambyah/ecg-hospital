@@ -9,7 +9,7 @@
             </div>
             <div class="card-body ">
                 <?= $this->session->flashdata('message'); ?>
-                <?= form_open_multipart(base_url('alat/gantiPassword')) ?>
+                <?= form_open_multipart(base_url('pasien/gantiPassword')) ?>
                 <div class="form-group">
                     <label for="current_password">Kata Sandi Lama</label>
                     <input type="password" class="form-control" id="current_password" name="current_password">
@@ -27,9 +27,7 @@
                 </div>
                 <div class="form-group row mb-4">
                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
-                    <div class="col-sm-12 col-md-7">
-                        <button class="btn btn-primary">Tambah</button>
-                    </div>
+                    <button class="btn btn-primary">Ganti</button>
                 </div>
             </div>
         </div>
