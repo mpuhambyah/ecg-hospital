@@ -5,7 +5,7 @@
         </div>
         <div class="card">
             <div class="card-header">
-                <h4>Form Tambah Pasien</h4>
+                <h4>Ganti Password</h4>
             </div>
             <div class="card-body ">
                 <?= $this->session->flashdata('message'); ?>
