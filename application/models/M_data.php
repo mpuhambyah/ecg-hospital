@@ -3,6 +3,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_data extends CI_Model
 {
+
+  public function dataProfile($id)
+  {
+    $query = "SELECT user.name as 'nama', user.email as 'username', user.is_activem, user.date_created, pasien.alamat, user_role.name as 'role'
+    FROM user 
+    INNER JOIN pasien ON user.email = pasien.NIK 
+    INNER JOIN user_role ON user.role_id = user_role.id 
+    WHERE user.id = $id";
+
+    return $this->db->query($query)->row_array();
+  }
+
   public function listPasienAPI($id)
   {
     $query = "SELECT pasien.id, pasien.id_alat, pasien.nik,  pasien.nama as 'nama', pasien.alamat, user.is_active

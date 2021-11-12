@@ -89,7 +89,7 @@ class Alat extends CI_Controller
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar', $data);
             $this->load->view('template/topbar', $data);
-            $this->load->view('profil/changepassword', $data);
+            $this->load->view('alat/changepassword', $data);
             $this->load->view('template/footer');
         } else {
             $current_password = $this->input->post('current_password');
@@ -98,13 +98,13 @@ class Alat extends CI_Controller
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                   Kata sandi lama salah!
                   </div>');
-                redirect(base_url('profil/changepassword'));
+                redirect(base_url('alat/changepassword'));
             } else {
                 if ($current_password == $new_password) {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                      Kata sandi baru tidak boleh sama dengan yang lama!
                       </div>');
-                    redirect(base_url('profil/changepassword'));
+                    redirect(base_url('alat/changepassword'));
                 } else {
                     $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
                     $this->db->set('password', $password_hash);
@@ -114,7 +114,7 @@ class Alat extends CI_Controller
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                       Kata sandi berhasil diubah!
                       </div>');
-                    redirect(base_url('profil/changepassword'));
+                    redirect(base_url('alat/changepassword'));
                 }
             }
         }
@@ -125,6 +125,10 @@ class Alat extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         $data['profile'] = $this->db->get('profile')->row_array();
         $data['title'] = "Profile";
+        $this->load->model('M_data');
+        $data['profileUser'] = $this->M_data->dataProfile($this->session->userdata('id'));
+        var_dump($data['profileUser']);
+        die;
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/navbar', $data);
