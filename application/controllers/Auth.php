@@ -73,7 +73,7 @@ class Auth extends CI_Controller
             #jika data user tidak ditemukan
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-        Email is not registered! </div>');
+        Account is not registered! </div>');
             redirect(base_url('auth'));
         }
     }
