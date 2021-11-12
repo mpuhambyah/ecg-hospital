@@ -101,7 +101,6 @@ class Alat extends CI_Controller
 
     public function addPasien()
     {
-        $user = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
         $data['alat'] = $this->db->get_where('alat', ['id_user' => $this->session->userdata('id')])->row_array();
         $data = [
             "id_alat" => $data['alat']['id'],
@@ -126,8 +125,11 @@ class Alat extends CI_Controller
 
     public function deletePasien($id)
     {
+        $pasien = $this->db->get_where('pasien', ['id' => $id])->row_array();
         $this->db->where('id', $id);
         $this->db->delete('pasien');
+        $this->db->where('email', $pasien['nik']);
+        $this->db->delete('user');
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
               Pasien berhasil dihapus!
               </div>');
