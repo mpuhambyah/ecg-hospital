@@ -51,9 +51,15 @@ class Auth extends CI_Controller
 
                     #memasukkan data di atas ke session
                     $this->session->set_userdata($data);
-                    var_dump("yooi");
-                    die;
-                    redirect(base_url('dokter'));
+                    if ($user['role_id'] == 1) {
+                        redirect(base_url('dokter'));
+                    } else if ($user['role_id'] == 2) {
+                        redirect(base_url('alat'));
+                    } else if ($user['role_id'] == 3) {
+                        redirect(base_url('pasien'));
+                    } else if ($user['role_id'] == 4) {
+                        redirect(base_url('admin'));
+                    }
 
                     #jika password salah
                 } else {
