@@ -40,7 +40,7 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 Password User berhasil di reset! (password : 000000)
                 </div>');
-        $this->db->where('email', $id);
+        $this->db->where('id', $id);
         $this->db->update('user', $data);
         redirect(base_url('alat/'));
     }
