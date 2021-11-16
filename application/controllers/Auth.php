@@ -7,8 +7,6 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
-        var_dump("yoi");
-        die;
     }
 
     #INDEX digunakan fungsi dashboard
