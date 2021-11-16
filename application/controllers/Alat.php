@@ -13,6 +13,8 @@ class Alat extends CI_Controller
             redirect(base_url('dokter'));
         } else if ($data['role_id'] == 3) {
             redirect(base_url('pasien'));
+        } else if ($data['role_id'] == 4) {
+            redirect(base_url('admin'));
         }
     }
 
