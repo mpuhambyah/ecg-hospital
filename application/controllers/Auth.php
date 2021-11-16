@@ -33,8 +33,6 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
         #query data select * from user where 'nrp'='$nrp'
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
-        var_dump($user);
-        die;
         #jika data user ditemukan
         if ($user) {
             #jika user sudah diaktivasi
@@ -49,6 +47,8 @@ class Auth extends CI_Controller
                         'id' => $user['id'],
                         'role_id' => $user['role_id']
                     ];
+                    var_dump($data);
+                    die;
 
                     #memasukkan data di atas ke session
                     $this->session->set_userdata($data);
