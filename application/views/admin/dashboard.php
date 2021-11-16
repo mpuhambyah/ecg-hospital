@@ -19,7 +19,7 @@
                                 </tr>
                                 <?php foreach ($listPasien as $l) : ?>
                                     <tr>
-                                        <td class="font-weight-600"><?= $l['nama'] ?></td>
+                                        <td class="font-weight-600"><?= $l['name'] ?></td>
                                         <td><?= $l['email'] ?></td>
                                         <td>
                                             <a href="<?= base_url() ?>admin/resetPassword/<?= $l['id'] ?>" class="btn btn-primary">Reset Password</a>
