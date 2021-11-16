@@ -51,7 +51,6 @@ class Auth extends CI_Controller
 
                     #memasukkan data di atas ke session
                     $this->session->set_userdata($data);
-                    var_dump($data);
                     var_dump("yooi");
                     die;
                     redirect(base_url('dokter'));
