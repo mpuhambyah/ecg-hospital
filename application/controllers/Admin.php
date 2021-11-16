@@ -42,7 +42,7 @@ class Admin extends CI_Controller
                 </div>');
         $this->db->where('id', $id);
         $this->db->update('user', $data);
-        redirect(base_url('alat/'));
+        redirect(base_url('admin/'));
     }
 
 
