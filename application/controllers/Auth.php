@@ -31,7 +31,8 @@ class Auth extends CI_Controller
         #mengambil data yg diinput oleh user
         $email = $this->input->post('email');
         $password = $this->input->post('password');
-
+        var_dump($email);
+        die;
         #query data select * from user where 'nrp'='$nrp'
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
