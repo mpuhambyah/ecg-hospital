@@ -17,15 +17,17 @@
                                     <th>Nama</th>
                                     <th>Username</th>
                                 </tr>
-                                <?php foreach ($listPasien as $l) : ?>
-                                    <tr>
-                                        <td class="font-weight-600"><?= $l['name'] ?></td>
-                                        <td><?= $l['email'] ?></td>
-                                        <td>
-                                            <a href="<?= base_url() ?>admin/resetPassword/<?= $l['id'] ?>" class="btn btn-primary">Reset Password</a>
-                                            <a href="<?= base_url() ?>admin/deleteUser/<?= $l['id'] ?>" class="btn btn-danger">Delete User</a>
-                                        </td>
-                                    </tr>
+                                <?php foreach ($listPasien as $l) :
+                                    if ($l['role_id'] != 4 && $l['role_id'] != 3) { ?>
+                                        <tr>
+                                            <td class="font-weight-600"><?= $l['name'] ?></td>
+                                            <td><?= $l['email'] ?></td>
+                                            <td>
+                                                <a href="<?= base_url() ?>admin/resetPassword/<?= $l['id'] ?>" class="btn btn-primary">Reset Password</a>
+                                                <a href="<?= base_url() ?>admin/deleteUser/<?= $l['id'] ?>" class="btn btn-danger">Delete User</a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
                                 <?php endforeach ?>
                             </table>
                         </div>
