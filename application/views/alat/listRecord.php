@@ -31,6 +31,13 @@
                                         </td>
                                         <td><?= date('d-m-Y H:i:s', $l['tanggal']) ?></td>
                                         <td>
+                                            <?php if ($l['diagnosa'] == 0) { ?>
+                                                <div class="badge badge-success">Normal</div>
+                                            <?php } else { ?>
+                                                <div class="badge badge-danger">Aritmia</div>
+                                            <?php } ?>
+                                        </td>
+                                        <td>
                                             <a href="<?= base_url() ?>alat/record/<?= $l['id'] . "/" . $l['id_rekaman'] ?>" class="btn btn-primary">Detail</a>
                                             <a data-toggle="modal" data-target="#deleteModal" class="deleteRecordPasien btn btn-danger" data-id=<?= $l['id'] ?> data-id_rekaman=<?= $l['id_rekaman'] ?> style="color:white">Delete</a>
                                         </td>
