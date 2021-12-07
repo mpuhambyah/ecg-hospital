@@ -5,16 +5,22 @@
         </div>
         <?php foreach ($listFile as $l) : ?>
             <div class="card card-hero">
-                <a class="card-header" href="<?= base_url() ?>dokter/recordRpeak/<?= $l['id_pasien'] ?>/<?= $l['id_rekaman'] ?>/<?= $l['id'] ?>" style="color:white;text-decoration:none;">
+                <a class="card-header" style="color:white;text-decoration:none;">
                     <div class=" card-icon">
                         <i class="fas fa-heartbeat"></i>
                     </div>
                     <h4><?= $l['nama_pasien'] ?></h4>
-                    <div class="card-description">Rekamana <?= $l['id_rekaman'] ?></div>
+                    <div class="card-description">Rekaman <?= $l['id_rekaman'] ?></div>
+                    <?php if($l['diagnosa'] == 0){ ?>
+                        <div class="card-description">Diagnosa : Normal</div>
+                    <?php } else { ?>
+                        <div class="card-description">Diagnosa : Aritmia</div>
+                    <?php }  ?>
+
                 </a>
                 <div class="card-body p-0">
                     <div class="tickets-list">
-                        <a href="<?= base_url() ?>dokter/record/" class="ticket-item">
+                        <a class="ticket-item">
                             <div class="ticket-title">
                                 <h4><?= $l['keterangan'] ?></h4>
                             </div>
