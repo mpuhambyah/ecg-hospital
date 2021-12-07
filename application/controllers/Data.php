@@ -6,14 +6,15 @@ ini_set('memory_limit', '-1');
 
 class Data extends CI_Controller
 {
-    public function apiGetData($id_pasien, $api_key)
+    public function apiGetData($id_pasien, $api_key, $diagnosa)
     {
         $count = 0;
         $dataJson = json_decode(file_get_contents('php://input'), TRUE);
         $alat = $this->db->get_where('alat', ['key_api' => $api_key])->row_array();
         $dataRecord = [
             "id_pasien" => $id_pasien,
-            "tanggal" => now()
+            "tanggal" => now(),
+            "diagnosa" => $diagnosa
         ];
         $this->db->insert('rekaman', $dataRecord);
         $this->db->select('id');
