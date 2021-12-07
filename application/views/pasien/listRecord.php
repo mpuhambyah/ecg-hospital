@@ -31,6 +31,13 @@
                                         </td>
                                         <td><?= date('d-m-Y H:i:s', $l['tanggal']) ?></td>
                                         <td>
+                                            <?php if ($l['diagnosa'] == 0) { ?>
+                                                <div class="badge badge-success">Normal</div>
+                                            <?php } else { ?>
+                                                <div class="badge badge-danger">Aritmia</div>
+                                            <?php } ?>
+                                        </td>
+                                        <td>
                                             <a href="<?= base_url() ?>pasien/listMinute/<?= $l['id'] . "/" . $l['id_rekaman'] ?>" class="btn btn-primary">Detail</a>
                                         </td>
                                     </tr>
