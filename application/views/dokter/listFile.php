@@ -10,7 +10,7 @@
                         <i class="fas fa-heartbeat"></i>
                     </div>
                     <h4><?= $l['nama_pasien'] ?></h4>
-                    <div class="card-description">Rekaman <?= $l['id_rekaman'] ?></div>
+                    <div class="card-description">Rekamana <?= $l['id_rekaman'] ?></div>
                 </a>
                 <div class="card-body p-0">
                     <div class="tickets-list">
