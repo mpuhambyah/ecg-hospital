@@ -74,7 +74,7 @@ class M_dokter extends CI_Model
 
   public function listFile()
   {
-    $query = "SELECT uploaded.id_pasien as 'id_pasien', uploaded.id as 'id', user.name as 'nama_user', pasien.nama as'nama_pasien', uploaded.created_at as 'tanggal', uploaded.id_rekaman, uploaded.keterangan
+    $query = "SELECT uploaded.id_pasien as 'id_pasien', uploaded.id as 'id', user.name as 'nama_user', pasien.nama as'nama_pasien', uploaded.created_at as 'tanggal', uploaded.id_rekaman, uploaded.keterangan, uploaded.diagnosa
     FROM uploaded 
     INNER JOIN pasien ON pasien.id = uploaded.id_pasien 
     INNER JOIN user ON user.id = uploaded.created_by 
